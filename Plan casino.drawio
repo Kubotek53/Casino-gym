@@ -1,0 +1,81 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 OPR/120.0.0.0" version="28.2.3">
+  <diagram name="Strona-1" id="pyvxWbZCExouC3EgYvPs">
+    <mxGraphModel dx="1202" dy="1868" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QIu-ev8RNedw-7oLTonK-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-31" target="QIu-ev8RNedw-7oLTonK-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-31" value="Admin&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="-110" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-34" target="QIu-ev8RNedw-7oLTonK-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-34" target="QIu-ev8RNedw-7oLTonK-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-34" target="QIu-ev8RNedw-7oLTonK-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="310" />
+              <mxPoint x="150" y="30" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-34" target="QIu-ev8RNedw-7oLTonK-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-34" value="User&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-64" value="&amp;lt;&amp;lt;Extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-36" target="QIu-ev8RNedw-7oLTonK-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-36" value="Logowanie" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="380" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-39" value="Edytuj dane usera" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="-90" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-70" value="&amp;lt;&amp;lt;Extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-41" target="QIu-ev8RNedw-7oLTonK-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-41" value="wybór usera" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="-20" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-65" value="&amp;lt;&amp;lt;Extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-43" target="QIu-ev8RNedw-7oLTonK-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-43" value="Wybierz grę" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="414" y="260" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-45" value="Zagraj w grę" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="210" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-82" value="&amp;lt;&amp;lt;Extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-74" target="QIu-ev8RNedw-7oLTonK-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-74" value="Wpłata środków" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="60" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-83" value="&amp;lt;&amp;lt;Extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-77" target="QIu-ev8RNedw-7oLTonK-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-77" value="Wypłata środków" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="130" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-79" value="Zarządzanie środkami" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="5" y="90" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-85" value="&amp;lt;&amp;lt;Include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="QIu-ev8RNedw-7oLTonK-84" target="QIu-ev8RNedw-7oLTonK-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QIu-ev8RNedw-7oLTonK-84" value="Weryfikacja środków" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="180" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
