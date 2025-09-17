@@ -1,1 +1,1 @@
-# Casino-gym pala szydlika
+# Casino-gym pala sz
