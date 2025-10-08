@@ -29,27 +29,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Logowanie2 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Logowanie2
+            // btnLogout
             // 
-            this.Logowanie2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Logowanie2.Location = new System.Drawing.Point(1730, 12);
-            this.Logowanie2.Name = "Logowanie2";
-            this.Logowanie2.Size = new System.Drawing.Size(162, 52);
-            this.Logowanie2.TabIndex = 0;
-            this.Logowanie2.Text = "Logowanie";
-            this.Logowanie2.UseVisualStyleBackColor = false;
-            this.Logowanie2.Click += new System.EventHandler(this.Logowanie2_Click);
+            this.btnLogout.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnLogout.Location = new System.Drawing.Point(1773, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
             // 
             // MainPage
             // 
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1904, 1011);
-            this.Controls.Add(this.Logowanie2);
+            this.Controls.Add(this.btnLogout);
             this.Name = "MainPage";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 
         }
@@ -58,6 +58,7 @@
 
         private System.Windows.Forms.Button Logowanie;
         private System.Windows.Forms.Button Logowanie2;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 

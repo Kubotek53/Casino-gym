@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Casino_gym
@@ -17,11 +10,66 @@ namespace Casino_gym
             InitializeComponent();
         }
 
-        private void Powrót_Click(object sender, EventArgs e)
+        // ================================
+        // ZDARZENIA FORMULARZA
+        // ================================
+        private void Login_Load(object sender, EventArgs e)
         {
-            MainPage f1 = new MainPage();
-            f1.Show();
+            // Tutaj możesz dodać np. inicjalizację połączenia z bazą danych
+            // lub wczytywanie konfiguracji
+        }
+
+        private void textboxUsername_TextChanged(object sender, EventArgs e)
+        {
+            // Zdarzenie zmiany tekstu w polu loginu (opcjonalne)
+        }
+
+        private void textboxPassword_TextChanged(object sender, EventArgs e)
+        {
+            // Zdarzenie zmiany tekstu w polu hasła (opcjonalne)
+        }
+
+        // ================================
+        // PRZYCISKI
+        // ================================
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            DoLogin();
+        }
+
+        private void Logowanie2_Click(object sender, EventArgs e)
+        {
+            DoLogin();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Register reg = new Register();
+            reg.Show();
             this.Hide();
+        }
+
+        // ================================
+        // LOGIKA LOGOWANIA
+        // ================================
+        private void DoLogin()
+        {
+            string user = textboxUsername.Text.Trim();
+            string pass = textboxPassword.Text.Trim();
+
+            // Na początek prosty test — bez bazy danych:
+            if (user == "admin" && pass == "1234")
+            {
+                MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MainPage main = new MainPage();
+                main.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Niepoprawny login lub hasło!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
