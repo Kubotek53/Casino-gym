@@ -4,7 +4,7 @@ using System.Linq;
 
 class Program
 {
-    static void Main()
+    static void MainBlack()
     {
         Console.WriteLine("Witaj w grze Blackjack!");
 
