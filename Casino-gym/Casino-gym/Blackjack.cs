@@ -1,8 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public class Class1
+class Program
 {
-	public Class1()
-	{
-	}
-}
+    static void Main()
+    {
+        Console.WriteLine("Witaj w grze Blackjack!");
+
+        Deck deck = new Deck();
+        deck.Shuffle();
+
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+       
