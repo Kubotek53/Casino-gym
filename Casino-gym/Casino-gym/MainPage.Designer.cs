@@ -1,6 +1,7 @@
 ﻿namespace Casino_gym
 {
-    partial class Form2
+    partial class MainPage
+
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -34,19 +35,20 @@
             // Logowanie2
             // 
             this.Logowanie2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Logowanie2.Location = new System.Drawing.Point(0, 0);
+            this.Logowanie2.Location = new System.Drawing.Point(1730, 12);
             this.Logowanie2.Name = "Logowanie2";
-            this.Logowanie2.Size = new System.Drawing.Size(75, 23);
+            this.Logowanie2.Size = new System.Drawing.Size(162, 52);
             this.Logowanie2.TabIndex = 0;
-            this.Logowanie2.Text = "Logowanie2";
+            this.Logowanie2.Text = "Logowanie";
             this.Logowanie2.UseVisualStyleBackColor = false;
             this.Logowanie2.Click += new System.EventHandler(this.Logowanie2_Click);
             // 
-            // Form2
+            // MainPage
             // 
-            this.ClientSize = new System.Drawing.Size(502, 417);
+            this.ClientSize = new System.Drawing.Size(1904, 1011);
             this.Controls.Add(this.Logowanie2);
-            this.Name = "Form2";
+            this.Name = "MainPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 

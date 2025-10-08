@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace Casino_gym
 {
-    public partial class Form2 : Form
+    public partial class MainPage: Form
     {
-        public Form2()
+        public MainPage()
         {
             InitializeComponent();
-        }
-        private void Logowanie_Click(object sender, EventArgs e)
-        {
-       
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -28,8 +24,8 @@ namespace Casino_gym
 
         private void Logowanie2_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.Show();
+            Login f1 = new Login();
+            f1.Show();
             this.Hide();
         }
     }
