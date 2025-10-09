@@ -49,6 +49,15 @@ namespace Casino_gym
             this.Hide();
         }
 
+        // 🔹 NOWY PRZYCISK — Kontynuuj bez logowania
+        private void btnSkipLogin_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Kontynuujesz jako gość.", "Tryb gościa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MainPage main = new MainPage();
+            main.Show();
+            this.Hide();
+        }
+
         // ================================
         // LOGIKA LOGOWANIA
         // ================================

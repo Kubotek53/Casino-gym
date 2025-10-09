@@ -31,9 +31,8 @@
             this.textboxUsername = new System.Windows.Forms.TextBox();
             this.textboxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnLogin.Click += new System.EventHandler(this.Logowanie2_Click);
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.btnSkipLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textboxUsername
@@ -59,6 +58,7 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.Logowanie2_Click);
             // 
             // btnRegister
             // 
@@ -68,6 +68,17 @@
             this.btnRegister.TabIndex = 3;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
+            // btnSkipLogin
+            // 
+            this.btnSkipLogin.Location = new System.Drawing.Point(68, 118);
+            this.btnSkipLogin.Name = "btnSkipLogin";
+            this.btnSkipLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnSkipLogin.TabIndex = 4;
+            this.btnSkipLogin.Text = "Skip Login";
+            this.btnSkipLogin.UseVisualStyleBackColor = true;
+            this.btnSkipLogin.Click += new System.EventHandler(this.btnSkipLogin_Click);
             // 
             // Login
             // 
@@ -76,6 +87,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(220, 230);
+            this.Controls.Add(this.btnSkipLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.textboxPassword);
@@ -94,5 +106,6 @@
         private System.Windows.Forms.TextBox textboxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnSkipLogin;
     }
 }
