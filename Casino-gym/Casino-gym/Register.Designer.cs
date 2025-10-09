@@ -32,9 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             this.btnBack = new System.Windows.Forms.Button();
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             this.SuspendLayout();
             // 
             // textboxUsername
@@ -60,13 +58,14 @@
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Nazwa konta:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Hasło:";
             // 
@@ -108,6 +107,7 @@
             this.Text = "Rejestracja";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

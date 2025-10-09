@@ -33,11 +33,13 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnSkipLogin = new System.Windows.Forms.Button();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textboxUsername
             // 
-            this.textboxUsername.Location = new System.Drawing.Point(28, 37);
+            this.textboxUsername.Location = new System.Drawing.Point(110, 40);
             this.textboxUsername.Name = "textboxUsername";
             this.textboxUsername.Size = new System.Drawing.Size(169, 20);
             this.textboxUsername.TabIndex = 0;
@@ -45,59 +47,79 @@
             // 
             // textboxPassword
             // 
-            this.textboxPassword.Location = new System.Drawing.Point(28, 63);
+            this.textboxPassword.Location = new System.Drawing.Point(110, 80);
             this.textboxPassword.Name = "textboxPassword";
+            this.textboxPassword.PasswordChar = '*';
             this.textboxPassword.Size = new System.Drawing.Size(169, 20);
             this.textboxPassword.TabIndex = 1;
+            this.textboxPassword.TextChanged += new System.EventHandler(this.textboxPassword_TextChanged_1);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(68, 89);
+            this.btnLogin.Location = new System.Drawing.Point(110, 120);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(80, 25);
             this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Zaloguj";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.Logowanie2_Click);
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(68, 163);
+            this.btnRegister.Location = new System.Drawing.Point(200, 120);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister.Size = new System.Drawing.Size(80, 25);
             this.btnRegister.TabIndex = 3;
-            this.btnRegister.Text = "Register";
+            this.btnRegister.Text = "Rejestracja";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnSkipLogin
             // 
-            this.btnSkipLogin.Location = new System.Drawing.Point(68, 118);
+            this.btnSkipLogin.Location = new System.Drawing.Point(110, 160);
             this.btnSkipLogin.Name = "btnSkipLogin";
-            this.btnSkipLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnSkipLogin.Size = new System.Drawing.Size(170, 25);
             this.btnSkipLogin.TabIndex = 4;
-            this.btnSkipLogin.Text = "Skip Login";
+            this.btnSkipLogin.Text = "Kontynuuj bez logowania";
             this.btnSkipLogin.UseVisualStyleBackColor = true;
             this.btnSkipLogin.Click += new System.EventHandler(this.btnSkipLogin_Click);
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Location = new System.Drawing.Point(30, 43);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(74, 13);
+            this.labelUsername.TabIndex = 5;
+            this.labelUsername.Text = "Użytkownik:";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(30, 83);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(42, 13);
+            this.labelPassword.TabIndex = 6;
+            this.labelPassword.Text = "Hasło:";
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(220, 230);
+            this.ClientSize = new System.Drawing.Size(340, 210);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.btnSkipLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.textboxPassword);
             this.Controls.Add(this.textboxUsername);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "Logowanie";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -107,5 +129,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnSkipLogin;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label labelPassword;
     }
 }

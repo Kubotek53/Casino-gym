@@ -80,5 +80,15 @@ namespace Casino_gym
                 MessageBox.Show("Niepoprawny login lub hasło!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textboxPassword_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
