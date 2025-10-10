@@ -31,6 +31,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnManageUsers_Click1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -44,10 +45,21 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnManageUsers_Click1
+            // 
+            this.btnManageUsers_Click1.Location = new System.Drawing.Point(24, 12);
+            this.btnManageUsers_Click1.Name = "btnManageUsers_Click1";
+            this.btnManageUsers_Click1.Size = new System.Drawing.Size(75, 23);
+            this.btnManageUsers_Click1.TabIndex = 1;
+            this.btnManageUsers_Click1.Text = "button1";
+            this.btnManageUsers_Click1.UseVisualStyleBackColor = true;
+            this.btnManageUsers_Click1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainPage
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1904, 1011);
+            this.Controls.Add(this.btnManageUsers_Click1);
             this.Controls.Add(this.btnLogout);
             this.Name = "MainPage";
             this.ResumeLayout(false);
@@ -59,6 +71,7 @@
         private System.Windows.Forms.Button Logowanie;
         private System.Windows.Forms.Button Logowanie2;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnManageUsers_Click1;
     }
 }
 

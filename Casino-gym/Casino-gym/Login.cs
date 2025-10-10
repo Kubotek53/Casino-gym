@@ -8,6 +8,9 @@ namespace Casino_gym
 {
     public partial class Login : Form
     {
+        // 🔹 Przechowuje aktualną rolę użytkownika (dostępna globalnie)
+        public static string CurrentUserRole = "guest";
+
         public Login()
         {
             InitializeComponent();
@@ -18,18 +21,12 @@ namespace Casino_gym
         // ================================
         private void Login_Load(object sender, EventArgs e)
         {
-            // Tutaj możesz dodać np. inicjalizację połączenia z bazą danych
+            // Można dodać inicjalizację połączenia, jeśli potrzebna
         }
 
-        private void textboxUsername_TextChanged(object sender, EventArgs e)
-        {
-            // opcjonalne
-        }
+        private void textboxUsername_TextChanged(object sender, EventArgs e) { }
 
-        private void textboxPassword_TextChanged(object sender, EventArgs e)
-        {
-            // opcjonalne
-        }
+        private void textboxPassword_TextChanged(object sender, EventArgs e) { }
 
         // ================================
         // PRZYCISKI
@@ -55,6 +52,7 @@ namespace Casino_gym
         private void btnSkipLogin_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kontynuujesz jako gość.", "Tryb gościa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CurrentUserRole = "guest"; // przypisanie roli gościa
             MainPage main = new MainPage();
             main.Show();
             this.Hide();
@@ -68,32 +66,37 @@ namespace Casino_gym
             string user = textboxUsername.Text.Trim();
             string pass = textboxPassword.Text.Trim();
 
-            if (user == "" || pass == "")
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!");
                 return;
             }
 
-            string hashedPassword = GetSHA256(pass); // 🔹 haszowanie hasła (TAK SAMO jak w Register.cs)
+            string hashedPassword = GetSHA256(pass); // haszowanie hasła
 
             try
             {
                 Database db = new Database();
                 db.OpenConnection();
 
-                string query = "SELECT * FROM users WHERE username = @user AND password = @pass";
+                // 🔹 Pobierz tylko nazwę użytkownika i rolę (bez * - bezpieczniejsze)
+                string query = "SELECT role FROM users WHERE username = @user AND password = @pass LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
                 cmd.Parameters.AddWithValue("@user", user);
                 cmd.Parameters.AddWithValue("@pass", hashedPassword);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
+                    // 🔹 Odczytaj rolę użytkownika
+                    string role = reader["role"].ToString();
+                    CurrentUserRole = role; // zapamiętaj rolę w zmiennej statycznej
+
                     reader.Close();
                     db.CloseConnection();
 
-                    MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Zalogowano jako: {user} ({role})", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MainPage main = new MainPage();
                     main.Show();
                     this.Hide();
@@ -126,12 +129,8 @@ namespace Casino_gym
             }
         }
 
-        private void textboxPassword_TextChanged_1(object sender, EventArgs e)
-        {
-        }
+        private void textboxPassword_TextChanged_1(object sender, EventArgs e) { }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
+        private void label1_Click(object sender, EventArgs e) { }
     }
 }

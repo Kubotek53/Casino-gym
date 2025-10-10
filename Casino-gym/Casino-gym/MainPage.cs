@@ -26,5 +26,21 @@ namespace Casino_gym
         {
 
         }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // 🔹 Dostęp tylko dla administratora
+            if (Login.CurrentUserRole == "admin")
+            {
+                UserManagement panel = new UserManagement();
+                panel.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Tylko administrator ma dostęp do tego panelu!");
+            }
+        }
     }
 }
