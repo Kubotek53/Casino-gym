@@ -56,33 +56,54 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(110, 120);
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(13, 110, 253); // niebieski (primary)
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.Location = new System.Drawing.Point(100, 120);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(80, 25);
+            this.btnLogin.Size = new System.Drawing.Size(100, 35);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Zaloguj";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Click += new System.EventHandler(this.Logowanie2_Click);
+
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(200, 120);
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(25, 135, 84); // zielony (success)
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Location = new System.Drawing.Point(210, 120);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(80, 25);
+            this.btnRegister.Size = new System.Drawing.Size(110, 35);
             this.btnRegister.TabIndex = 3;
             this.btnRegister.Text = "Rejestracja";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+
             // 
             // btnSkipLogin
             // 
-            this.btnSkipLogin.Location = new System.Drawing.Point(110, 160);
+            this.btnSkipLogin.BackColor = System.Drawing.Color.FromArgb(108, 117, 125); // szary (secondary)
+            this.btnSkipLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSkipLogin.FlatAppearance.BorderSize = 0;
+            this.btnSkipLogin.ForeColor = System.Drawing.Color.White;
+            this.btnSkipLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSkipLogin.Location = new System.Drawing.Point(100, 170);
             this.btnSkipLogin.Name = "btnSkipLogin";
-            this.btnSkipLogin.Size = new System.Drawing.Size(170, 25);
+            this.btnSkipLogin.Size = new System.Drawing.Size(220, 35);
             this.btnSkipLogin.TabIndex = 4;
             this.btnSkipLogin.Text = "Kontynuuj bez logowania";
-            this.btnSkipLogin.UseVisualStyleBackColor = true;
+            this.btnSkipLogin.UseVisualStyleBackColor = false;
+            this.btnSkipLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSkipLogin.Click += new System.EventHandler(this.btnSkipLogin_Click);
+
             // 
             // labelUsername
             // 

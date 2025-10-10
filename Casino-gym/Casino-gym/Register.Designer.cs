@@ -71,25 +71,37 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnRegister.Location = new System.Drawing.Point(120, 130);
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(25, 135, 84); // zielony (Bootstrap 'success')
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Location = new System.Drawing.Point(110, 130);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(150, 30);
+            this.btnRegister.Size = new System.Drawing.Size(170, 40);
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Zarejestruj się";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnBack.Location = new System.Drawing.Point(120, 180);
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(108, 117, 125); // szary (Bootstrap 'secondary')
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBack.Location = new System.Drawing.Point(110, 190);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(150, 30);
+            this.btnBack.Size = new System.Drawing.Size(170, 40);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Powrót do logowania";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+
             // 
             // Register
             // 

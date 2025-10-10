@@ -58,7 +58,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd.Location = new System.Drawing.Point(25, 330);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(150, 35);
+            this.btnAdd.Size = new System.Drawing.Size(150, 45);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "➕ Dodaj użytkownika";
             this.btnAdd.UseVisualStyleBackColor = false;
