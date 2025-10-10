@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Casino_gym
@@ -16,17 +19,16 @@ namespace Casino_gym
         private void Login_Load(object sender, EventArgs e)
         {
             // Tutaj możesz dodać np. inicjalizację połączenia z bazą danych
-            // lub wczytywanie konfiguracji
         }
 
         private void textboxUsername_TextChanged(object sender, EventArgs e)
         {
-            // Zdarzenie zmiany tekstu w polu loginu (opcjonalne)
+            // opcjonalne
         }
 
         private void textboxPassword_TextChanged(object sender, EventArgs e)
         {
-            // Zdarzenie zmiany tekstu w polu hasła (opcjonalne)
+            // opcjonalne
         }
 
         // ================================
@@ -49,7 +51,7 @@ namespace Casino_gym
             this.Hide();
         }
 
-        // 🔹 NOWY PRZYCISK — Kontynuuj bez logowania
+        // 🔹 Przycisk — kontynuuj bez logowania
         private void btnSkipLogin_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kontynuujesz jako gość.", "Tryb gościa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -66,29 +68,70 @@ namespace Casino_gym
             string user = textboxUsername.Text.Trim();
             string pass = textboxPassword.Text.Trim();
 
-            // Na początek prosty test — bez bazy danych:
-            if (user == "admin" && pass == "1234")
+            if (user == "" || pass == "")
             {
-                MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                MainPage main = new MainPage();
-                main.Show();
-                this.Hide();
+                MessageBox.Show("Uzupełnij wszystkie pola!");
+                return;
             }
-            else
+
+            string hashedPassword = GetSHA256(pass); // 🔹 haszowanie hasła (TAK SAMO jak w Register.cs)
+
+            try
             {
-                MessageBox.Show("Niepoprawny login lub hasło!", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Database db = new Database();
+                db.OpenConnection();
+
+                string query = "SELECT * FROM users WHERE username = @user AND password = @pass";
+                MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
+                cmd.Parameters.AddWithValue("@user", user);
+                cmd.Parameters.AddWithValue("@pass", hashedPassword);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    db.CloseConnection();
+
+                    MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MainPage main = new MainPage();
+                    main.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    reader.Close();
+                    db.CloseConnection();
+                    MessageBox.Show("Niepoprawny login lub hasło!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas logowania: " + ex.Message);
+            }
+        }
+
+        // ================================
+        // FUNKCJA HASHUJĄCA SHA256
+        // ================================
+        private static string GetSHA256(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
             }
         }
 
         private void textboxPassword_TextChanged_1(object sender, EventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

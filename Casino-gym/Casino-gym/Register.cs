@@ -16,27 +16,21 @@ namespace Casino_gym
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            bool debug = false; // ustaw na true tymczasowo jeśli chcesz widzieć nazwę bazy i wynik insertu
+            string username = textboxUsername.Text.Trim();
+            string password = textboxPassword.Text.Trim();
 
-            string username = textboxUsername.Text ?? "";
-            string password = textboxPassword.Text ?? "";
-
-            // Normalizacja i oczyszczenie
-            username = username.Trim();
-            username = Regex.Replace(username, @"\s+", " ");
-            username = username.Normalize(NormalizationForm.FormC);
-
-            password = password.Trim();
-
+            // Sprawdzenie poprawności danych
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Proszę wypełnić wszystkie pola.");
+                MessageBox.Show("Proszę wypełnić wszystkie pola.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Hashowanie hasła
             string hashedPassword = GetSHA256(password);
 
-            string connectionString = "server=localhost;uid=root;pwd=zaq1@WSX;database=casinogymdb;";
+            // 🔹 ZMIEŃ TYLKO TO jeśli masz inną bazę, użytkownika lub hasło
+            string connectionString = "server=localhost;uid=root;pwd=zaq1@WSX;database=casino_gym;";
 
             try
             {
@@ -44,61 +38,47 @@ namespace Casino_gym
                 {
                     conn.Open();
 
-                    if (debug)
+                    // 1️⃣ Sprawdzenie, czy użytkownik już istnieje
+                    using (var checkCmd = new MySqlCommand("SELECT COUNT(*) FROM users WHERE username = @username", conn))
                     {
-                        // pokaż, z jaką bazą się łączysz (pomocne do weryfikacji)
-                        var dbName = new MySqlCommand("SELECT DATABASE()", conn).ExecuteScalar();
-                        MessageBox.Show("Połączono z bazą: " + (dbName ?? "(brak)"));
+                        checkCmd.Parameters.AddWithValue("@username", username);
+                        int userExists = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (userExists > 0)
+                        {
+                            MessageBox.Show("Ten użytkownik już istnieje. Wybierz inny login.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
 
-                    // Używamy INSERT IGNORE -> jeśli username ma UNIQUE index, wstawienie zostanie zignorowane przy duplikacie
-                    using (var cmd = new MySqlCommand(
-                        "INSERT IGNORE INTO users (username, password) VALUES (@username, @password);", conn))
+                    // 2️⃣ Rejestracja nowego użytkownika
+                    using (var insertCmd = new MySqlCommand("INSERT INTO users (username, password) VALUES (@username, @password)", conn))
                     {
-                        cmd.Parameters.Add("@username", MySqlDbType.VarChar, 100).Value = username;
-                        cmd.Parameters.Add("@password", MySqlDbType.VarChar, 255).Value = hashedPassword;
+                        insertCmd.Parameters.AddWithValue("@username", username);
+                        insertCmd.Parameters.AddWithValue("@password", hashedPassword);
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (debug)
-                        {
-                            MessageBox.Show("rowsAffected = " + rowsAffected);
-                        }
+                        int rowsAffected = insertCmd.ExecuteNonQuery();
 
                         if (rowsAffected == 1)
                         {
-                            MessageBox.Show("Rejestracja zakończona pomyślnie!");
-                            this.Hide();
+                            MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             new Login().Show();
-                            return;
+                            this.Hide();
                         }
                         else
                         {
-                            // rowsAffected == 0 -> INSERT IGNORE zignorował wstawienie => użytkownik już istnieje
-                            MessageBox.Show("Ten użytkownik już istnieje. Wybierz inny login.");
-                            return;
+                            MessageBox.Show("Nie udało się utworzyć konta. Spróbuj ponownie.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
-            catch (MySqlException mex)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Błąd MySQL: " + mex.Message);
+                MessageBox.Show("Błąd bazy danych: " + ex.Message, "MySQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd: " + ex.Message);
-            }
-        }
-
-        private static string GetSHA256(string input)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in bytes) sb.Append(b.ToString("x2"));
-                return sb.ToString();
+                MessageBox.Show("Nieoczekiwany błąd: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -108,9 +88,22 @@ namespace Casino_gym
             this.Hide();
         }
 
+        // Funkcja hashująca hasło (SHA256)
+        private static string GetSHA256(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
-
+            // Niepotrzebne zdarzenie – można usunąć, ale nie przeszkadza
         }
     }
 }
