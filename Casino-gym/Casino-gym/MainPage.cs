@@ -31,7 +31,7 @@ namespace Casino_gym
         private void button1_Click(object sender, EventArgs e)
         {
             // 🔹 Dostęp tylko dla administratora
-            if (Login.CurrentUserRole == "admin")
+            if (Login.CurrentUserRole == "Administrator")
             {
                 UserManagement panel = new UserManagement();
                 panel.Show();
@@ -41,6 +41,11 @@ namespace Casino_gym
             {
                 MessageBox.Show("Tylko administrator ma dostęp do tego panelu!");
             }
+        }
+
+        private void Poker_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

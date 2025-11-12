@@ -10,7 +10,8 @@ namespace Casino_gym
 
         public Database()
         {
-            string connectionString = "server=localhost;user=root;password=zaq1@WSX;database=casino_gym;";
+            // Połączenie z lokalnym serwerem MySQL Portable
+            string connectionString = "server=127.0.0.1;port=3306;user=root;password=zaq1@WSX;database=casino_gym;SslMode=none;";
             connection = new MySqlConnection(connectionString);
         }
 
@@ -28,7 +29,7 @@ namespace Casino_gym
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd połączenia z bazą danych: " + ex.Message);
+                MessageBox.Show("❌ Błąd połączenia z bazą danych: " + ex.Message);
             }
         }
 

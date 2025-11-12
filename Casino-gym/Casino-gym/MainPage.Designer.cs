@@ -1,4 +1,6 @@
-﻿namespace Casino_gym
+﻿using System.Windows.Forms;
+
+namespace Casino_gym
 {
     partial class MainPage
 
@@ -31,6 +33,7 @@
         {
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnManageUsers_Click1 = new System.Windows.Forms.Button();
+            this.Poker = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -41,7 +44,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1720, 12);
+            this.btnLogout.Location = new System.Drawing.Point(1722, 58);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(130, 40);
             this.btnLogout.TabIndex = 0;
@@ -57,7 +60,7 @@
             this.btnManageUsers_Click1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageUsers_Click1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnManageUsers_Click1.ForeColor = System.Drawing.Color.White;
-            this.btnManageUsers_Click1.Location = new System.Drawing.Point(1700, 60);
+            this.btnManageUsers_Click1.Location = new System.Drawing.Point(1705, 12);
             this.btnManageUsers_Click1.Name = "btnManageUsers_Click1";
             this.btnManageUsers_Click1.Size = new System.Drawing.Size(160, 40);
             this.btnManageUsers_Click1.TabIndex = 1;
@@ -65,10 +68,21 @@
             this.btnManageUsers_Click1.UseVisualStyleBackColor = false;
             this.btnManageUsers_Click1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Poker
+            // 
+            this.Poker.Location = new System.Drawing.Point(12, 12);
+            this.Poker.Name = "Poker";
+            this.Poker.Size = new System.Drawing.Size(75, 23);
+            this.Poker.TabIndex = 2;
+            this.Poker.Text = "button1";
+            this.Poker.UseVisualStyleBackColor = true;
+            this.Poker.Click += new System.EventHandler(this.Poker_Click);
+            // 
             // MainPage
             // 
             this.BackgroundImage = global::Casino_gym.Properties.Resources.cas;
             this.ClientSize = new System.Drawing.Size(1904, 1011);
+            this.Controls.Add(this.Poker);
             this.Controls.Add(this.btnManageUsers_Click1);
             this.Controls.Add(this.btnLogout);
             this.Name = "MainPage";
@@ -82,6 +96,7 @@
         private System.Windows.Forms.Button Logowanie2;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnManageUsers_Click1;
+        private Button Poker;
     }
 }
 

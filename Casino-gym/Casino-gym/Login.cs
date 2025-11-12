@@ -63,7 +63,7 @@ namespace Casino_gym
         // ================================
         private void DoLogin()
         {
-            string user = textboxUsername.Text.Trim();
+            string user = textboxUsername.Text.Trim().ToLower(); // 🔹 lowercase
             string pass = textboxPassword.Text.Trim();
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
@@ -76,36 +76,35 @@ namespace Casino_gym
 
             try
             {
-                Database db = new Database();
-                db.OpenConnection();
-
-                // 🔹 Pobierz tylko nazwę użytkownika i rolę (bez * - bezpieczniejsze)
-                string query = "SELECT role FROM users WHERE username = @user AND password = @pass LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
-                cmd.Parameters.AddWithValue("@user", user);
-                cmd.Parameters.AddWithValue("@pass", hashedPassword);
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                string connectionString = "server=127.0.0.1;port=3306;user=root;password=zaq1@WSX;database=casino_gym;SslMode=none;";
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    // 🔹 Odczytaj rolę użytkownika
-                    string role = reader["role"].ToString();
-                    CurrentUserRole = role; // zapamiętaj rolę w zmiennej statycznej
+                    conn.Open();
 
-                    reader.Close();
-                    db.CloseConnection();
+                    // 🔹 Pobierz rolę użytkownika po poprawnym loginie i haśle
+                    string query = "SELECT role FROM users WHERE LOWER(username) = @user AND password = @pass LIMIT 1";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user", user);
+                        cmd.Parameters.AddWithValue("@pass", hashedPassword);
 
-                    MessageBox.Show($"Zalogowano jako: {user} ({role})", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MainPage main = new MainPage();
-                    main.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    reader.Close();
-                    db.CloseConnection();
-                    MessageBox.Show("Niepoprawny login lub hasło!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            string role = reader["role"].ToString();
+                            CurrentUserRole = role;
+
+                            MessageBox.Show($"Zalogowano jako: {user} ({role})", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MainPage main = new MainPage();
+                            main.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Niepoprawny login lub hasło!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        reader.Close();
+                    }
                 }
             }
             catch (Exception ex)

@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Casino_gym
 {
@@ -51,11 +50,12 @@ namespace Casino_gym
                         }
                     }
 
-                    // 2️⃣ Rejestracja nowego użytkownika
-                    using (var insertCmd = new MySqlCommand("INSERT INTO users (username, password) VALUES (@username, @password)", conn))
+                    // 2️⃣ Rejestracja nowego użytkownika z domyślną rolą "Użytkownicy"
+                    using (var insertCmd = new MySqlCommand("INSERT INTO users (username, password, role) VALUES (@username, @password, @role)", conn))
                     {
                         insertCmd.Parameters.AddWithValue("@username", username);
                         insertCmd.Parameters.AddWithValue("@password", hashedPassword);
+                        insertCmd.Parameters.AddWithValue("@role", "Użytkownik"); // 🔹 domyślna rola
 
                         int rowsAffected = insertCmd.ExecuteNonQuery();
 
