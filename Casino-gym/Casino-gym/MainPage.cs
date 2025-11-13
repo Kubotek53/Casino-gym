@@ -43,9 +43,12 @@ namespace Casino_gym
             }
         }
 
-        private void Poker_Click(object sender, EventArgs e)
+        private void Wallet_Click(object sender, EventArgs e)
         {
-
+            string currentUser = Login.CurrentUserRole;
+            WalletForm walletForm = new WalletForm(currentUser);
+            walletForm.Show();
+            this.Hide();
         }
     }
 }

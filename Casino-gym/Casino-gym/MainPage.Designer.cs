@@ -33,7 +33,7 @@ namespace Casino_gym
         {
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnManageUsers_Click1 = new System.Windows.Forms.Button();
-            this.Poker = new System.Windows.Forms.Button();
+            this.Wallet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -68,21 +68,21 @@ namespace Casino_gym
             this.btnManageUsers_Click1.UseVisualStyleBackColor = false;
             this.btnManageUsers_Click1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Poker
+            // Wallet
             // 
-            this.Poker.Location = new System.Drawing.Point(12, 12);
-            this.Poker.Name = "Poker";
-            this.Poker.Size = new System.Drawing.Size(75, 23);
-            this.Poker.TabIndex = 2;
-            this.Poker.Text = "button1";
-            this.Poker.UseVisualStyleBackColor = true;
-            this.Poker.Click += new System.EventHandler(this.Poker_Click);
+            this.Wallet.Location = new System.Drawing.Point(12, 12);
+            this.Wallet.Name = "Wallet";
+            this.Wallet.Size = new System.Drawing.Size(75, 23);
+            this.Wallet.TabIndex = 2;
+            this.Wallet.Text = "button1";
+            this.Wallet.UseVisualStyleBackColor = true;
+            this.Wallet.Click += new System.EventHandler(this.Wallet_Click);
             // 
             // MainPage
             // 
             this.BackgroundImage = global::Casino_gym.Properties.Resources.cas;
             this.ClientSize = new System.Drawing.Size(1904, 1011);
-            this.Controls.Add(this.Poker);
+            this.Controls.Add(this.Wallet);
             this.Controls.Add(this.btnManageUsers_Click1);
             this.Controls.Add(this.btnLogout);
             this.Name = "MainPage";
@@ -96,7 +96,7 @@ namespace Casino_gym
         private System.Windows.Forms.Button Logowanie2;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnManageUsers_Click1;
-        private Button Poker;
+        private Button Wallet;
     }
 }
 
