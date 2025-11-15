@@ -12,30 +12,25 @@ namespace Casino_gym
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
+            Application.Exit(); // NATYCHMIAST zamyka aplikację
         }
+
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
-        private void btnLogout_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-
+        // ================================
+        // PANEL ADMINA
+        // ================================
         private void button1_Click(object sender, EventArgs e)
         {
-            // 🔹 Dostęp tylko dla administratora
             if (Login.CurrentUserRole == "Administrator")
             {
                 UserManagement panel = new UserManagement();
                 panel.Show();
-                this.Hide();
+                this.Close();
             }
             else
             {
@@ -43,12 +38,20 @@ namespace Casino_gym
             }
         }
 
+        // ================================
+        // PORTFEL
+        // ================================
         private void Wallet_Click(object sender, EventArgs e)
         {
-            string currentUser = Login.CurrentUserRole;
-            WalletForm walletForm = new WalletForm(currentUser);
-            walletForm.Show();
-            this.Hide();
+            if (string.IsNullOrEmpty(Login.CurrentLoggedUsername))
+            {
+                MessageBox.Show("Błąd! Brak nazwy użytkownika. Zaloguj się ponownie.");
+                return;
+            }
+
+            WalletSimpleForm wallet = new WalletSimpleForm(Login.CurrentLoggedUsername);
+            wallet.Show();
+            this.Close();
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Casino_gym
                         {
                             MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             new Login().Show();
-                            this.Hide();
+                            this.Close();
                         }
                         else
                         {
@@ -85,7 +85,7 @@ namespace Casino_gym
         private void btnBack_Click(object sender, EventArgs e)
         {
             new Login().Show();
-            this.Hide();
+            this.Close();
         }
 
         // Funkcja hashująca hasło (SHA256)
