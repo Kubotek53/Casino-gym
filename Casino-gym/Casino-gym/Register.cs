@@ -51,7 +51,7 @@ namespace Casino_gym
 
                 // 2️⃣ Dodanie użytkownika (domyślna rola = "Użytkownik")
                 using (var insertCmd = new SQLiteCommand(
-                    "INSERT INTO users (username, password, role) VALUES (@username, @password, @role)", conn))
+                    "INSERT INTO users (username, password, role, balance) VALUES (@username, @password, @role, 100)", conn))
                 {
                     insertCmd.Parameters.AddWithValue("@username", username);
                     insertCmd.Parameters.AddWithValue("@password", hashedPassword);

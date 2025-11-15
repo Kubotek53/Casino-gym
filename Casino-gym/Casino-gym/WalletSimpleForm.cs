@@ -70,8 +70,15 @@ namespace Casino_gym
                 return;
             }
 
+            if (amount > 100)
+            {
+                MessageBox.Show("Maksymalna jednorazowa wpłata to 100 zł!", "Limit");
+                return;
+            }
+
             UpdateBalance(amount);
         }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
