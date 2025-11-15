@@ -2,12 +2,14 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 
 namespace Casino_gym
 {
     public partial class AddUser : Form
     {
+        Database db = new Database();
+
         public AddUser()
         {
             InitializeComponent();
@@ -15,7 +17,7 @@ namespace Casino_gym
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            string username = textboxUsername.Text.Trim().ToLower(); // lowercase
+            string username = textboxUsername.Text.Trim().ToLower();
             string password = textboxPassword.Text.Trim();
             string role = comboRole.SelectedItem?.ToString() ?? "";
 
@@ -29,53 +31,55 @@ namespace Casino_gym
 
             string hashedPassword = GetSHA256(password);
 
-            string connectionString = "server=127.0.0.1;port=3306;user=root;password=zaq1@WSX;database=casino_gym;SslMode=none;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                try
+                db.OpenConnection();
+                SQLiteConnection conn = db.GetConnection();
+
+                // Sprawdzenie, czy użytkownik już istnieje
+                string checkQuery = "SELECT COUNT(*) FROM users WHERE LOWER(username)=@username";
+                using (SQLiteCommand checkCmd = new SQLiteCommand(checkQuery, conn))
                 {
-                    conn.Open();
+                    checkCmd.Parameters.AddWithValue("@username", username);
 
-                    // Sprawdzenie, czy użytkownik już istnieje
-                    string checkQuery = "SELECT COUNT(*) FROM users WHERE LOWER(username)=@username";
-                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                    int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    if (exists > 0)
                     {
-                        checkCmd.Parameters.AddWithValue("@username", username);
-                        int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
-                        if (exists > 0)
-                        {
-                            MessageBox.Show("Użytkownik o takiej nazwie już istnieje!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-
-                    // Dodanie nowego użytkownika z hashem
-                    string query = "INSERT INTO users (username, password, role) VALUES (@username, @password, @role)";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@password", hashedPassword);
-                        cmd.Parameters.AddWithValue("@role", role);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show($"Użytkownik '{username}' o roli '{role}' został dodany!", "Sukces",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close(); // zamknięcie formularza rejestracji
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie udało się dodać użytkownika!", "Błąd",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Użytkownik o takiej nazwie już istnieje!", "Błąd",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                 }
-                catch (Exception ex)
+
+                // Dodanie użytkownika
+                string insertQuery = "INSERT INTO users (username, password, role) VALUES (@username, @password, @role)";
+                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
                 {
-                    MessageBox.Show("Błąd bazy danych: " + ex.Message, "Błąd",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@role", role);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        MessageBox.Show($"Użytkownik '{username}' o roli '{role}' został dodany!",
+                            "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie udało się dodać użytkownika!", "Błąd",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+
+                db.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd bazy danych: " + ex.Message, "Błąd",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -85,8 +89,10 @@ namespace Casino_gym
             {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
                 StringBuilder sb = new StringBuilder();
+
                 foreach (byte b in bytes)
                     sb.Append(b.ToString("x2"));
+
                 return sb.ToString();
             }
         }

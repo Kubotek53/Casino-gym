@@ -1,14 +1,12 @@
 ﻿using System;
+using System.Data.SQLite;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Casino_gym
 {
     public partial class WalletSimpleForm : Form
     {
         private string currentUsername;
-        private string connectionString =
-            "server=127.0.0.1;port=3306;user=root;password=zaq1@WSX;database=casino_gym;SslMode=none;";
 
         public WalletSimpleForm(string username)
         {
@@ -31,29 +29,29 @@ namespace Casino_gym
         {
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                Database db = new Database();
+                db.OpenConnection();
+
+                string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
+
+                using (var cmd = new SQLiteCommand(query, db.GetConnection()))
                 {
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
 
-                    string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
+                    object result = cmd.ExecuteScalar();
 
-                    using (var cmd = new MySqlCommand(query, conn))
+                    if (result == null || result == DBNull.Value)
                     {
-                        cmd.Parameters.AddWithValue("@username", currentUsername);
-
-                        object result = cmd.ExecuteScalar();
-
-                        if (result == null || result == DBNull.Value)
-                        {
-                            lblBalance.Text = "Saldo: 0.00 zł";
-                        }
-                        else
-                        {
-                            decimal balance = Convert.ToDecimal(result);
-                            lblBalance.Text = $"Saldo: {balance:0.00} zł";
-                        }
+                        lblBalance.Text = "Saldo: 0.00 zł";
+                    }
+                    else
+                    {
+                        decimal balance = Convert.ToDecimal(result);
+                        lblBalance.Text = $"Saldo: {balance:0.00} zł";
                     }
                 }
+
+                db.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -62,7 +60,7 @@ namespace Casino_gym
         }
 
         // ======================
-        // Wpłata
+        // WPŁATA
         // ======================
         private void btnDeposit_Click(object sender, EventArgs e)
         {
@@ -74,6 +72,7 @@ namespace Casino_gym
 
             UpdateBalance(amount);
         }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             MainPage main = new MainPage();
@@ -81,46 +80,48 @@ namespace Casino_gym
             this.Hide();
         }
 
-
         // ======================
-        // Aktualizacja salda
+        // AKTUALIZACJA SALDA
         // ======================
         private void UpdateBalance(decimal amount)
         {
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                Database db = new Database();
+                db.OpenConnection();
+
+                // Pobranie aktualnego salda
+                string getQuery = "SELECT balance FROM users WHERE username=@username LIMIT 1";
+                decimal currentBalance = 0;
+
+                using (var cmd = new SQLiteCommand(getQuery, db.GetConnection()))
                 {
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
+                    var result = cmd.ExecuteScalar();
 
-                    // Pobranie aktualnego salda
-                    string getQuery = "SELECT balance FROM users WHERE username=@username LIMIT 1";
-                    decimal currentBalance = 0;
-
-                    using (var cmd = new MySqlCommand(getQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", currentUsername);
-                        currentBalance = Convert.ToDecimal(cmd.ExecuteScalar());
-                    }
-
-                    // Wyliczenie nowego salda
-                    decimal newBalance = currentBalance + amount;
-
-                    // Zapis
-                    string updateQuery = "UPDATE users SET balance=@balance WHERE username=@username";
-
-                    using (var cmd = new MySqlCommand(updateQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@balance", newBalance);
-                        cmd.Parameters.AddWithValue("@username", currentUsername);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Wpłata zakończona pomyślnie.");
-
-                    LoadBalance();
-                    txtAmount.Clear();
+                    if (result != null && result != DBNull.Value)
+                        currentBalance = Convert.ToDecimal(result);
                 }
+
+                // Nowe saldo
+                decimal newBalance = currentBalance + amount;
+
+                // Zapis nowego salda
+                string updateQuery = "UPDATE users SET balance=@balance WHERE username=@username";
+
+                using (var cmd = new SQLiteCommand(updateQuery, db.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@balance", newBalance);
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
+                    cmd.ExecuteNonQuery();
+                }
+
+                db.CloseConnection();
+
+                MessageBox.Show("Wpłata zakończona pomyślnie.");
+
+                LoadBalance();
+                txtAmount.Clear();
             }
             catch (Exception ex)
             {

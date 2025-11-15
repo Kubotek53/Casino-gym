@@ -1,5 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
+using System.Data.SQLite;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -9,7 +9,9 @@ namespace Casino_gym
     public partial class Login : Form
     {
         public static string CurrentUserRole = "guest";
-        public static string CurrentLoggedUsername = "";   // 👈 TU zapisujemy zalogowanego użytkownika
+        public static string CurrentLoggedUsername = ""; // kto jest zalogowany
+
+        Database db = new Database();
 
         public Login()
         {
@@ -25,6 +27,21 @@ namespace Casino_gym
         {
             DoLogin();
         }
+        private void textboxUsername_TextChanged(object sender, EventArgs e)
+        {
+            // nic - placeholder
+        }
+
+        private void textboxPassword_TextChanged_1(object sender, EventArgs e)
+        {
+            // nic - placeholder
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            // nic - placeholder
+        }
+
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -32,26 +49,14 @@ namespace Casino_gym
             reg.Show();
             this.Hide();
         }
-        private void textboxUsername_TextChanged(object sender, EventArgs e)
-        {
-            // nic nie musi tu być
-        }
-
-        private void textboxPassword_TextChanged_1(object sender, EventArgs e)
-        {
-            // nic nie musi tu być
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            // opcjonalnie
-        }
 
         private void btnSkipLogin_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kontynuujesz jako gość.", "Tryb gościa");
+
             CurrentUserRole = "guest";
-            CurrentLoggedUsername = "guest";   // 👈 dodane
+            CurrentLoggedUsername = "guest";
+
             MainPage main = new MainPage();
             main.Show();
             this.Hide();
@@ -72,47 +77,44 @@ namespace Casino_gym
 
             try
             {
-                string connectionString =
-                    "server=127.0.0.1;port=3306;user=root;password=zaq1@WSX;database=casino_gym;SslMode=none;";
+                db.OpenConnection();
+                SQLiteConnection conn = db.GetConnection();
 
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                string query = "SELECT role FROM users WHERE LOWER(username)=@user AND password=@pass LIMIT 1";
+
+                using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@user", user);
+                    cmd.Parameters.AddWithValue("@pass", hashedPassword);
 
-                    string query = "SELECT role FROM users WHERE LOWER(username)=@user AND password=@pass LIMIT 1";
+                    var reader = cmd.ExecuteReader();
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    if (reader.Read())
                     {
-                        cmd.Parameters.AddWithValue("@user", user);
-                        cmd.Parameters.AddWithValue("@pass", hashedPassword);
+                        string role = reader["role"].ToString();
 
-                        var reader = cmd.ExecuteReader();
+                        CurrentUserRole = role;
+                        CurrentLoggedUsername = user;
 
-                        if (reader.Read())
-                        {
-                            string role = reader["role"].ToString();
+                        MessageBox.Show($"Zalogowano jako: {user} ({role})");
 
-                            CurrentUserRole = role;        // 👈 Zapisujemy rolę
-                            CurrentLoggedUsername = user;  // 👈 ZAPISUJEMY LOGIN UŻYTKOWNIKA
-
-                            MessageBox.Show($"Zalogowano jako: {user} ({role})");
-
-                            MainPage main = new MainPage();
-                            main.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Niepoprawny login lub hasło!");
-                        }
-
-                        reader.Close();
+                        MainPage main = new MainPage();
+                        main.Show();
+                        this.Hide();
                     }
+                    else
+                    {
+                        MessageBox.Show("❌ Niepoprawny login lub hasło!");
+                    }
+
+                    reader.Close();
                 }
+
+                db.CloseConnection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd podczas logowania: " + ex.Message);
+                MessageBox.Show("❌ Błąd podczas logowania: " + ex.Message);
             }
         }
 
@@ -121,8 +123,8 @@ namespace Casino_gym
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
-                StringBuilder sb = new StringBuilder();
 
+                StringBuilder sb = new StringBuilder();
                 foreach (byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
