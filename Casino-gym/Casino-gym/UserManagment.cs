@@ -1,6 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace Casino_gym
@@ -25,7 +25,7 @@ namespace Casino_gym
                 db.OpenConnection();
 
                 string query = "SELECT id, username, role FROM users";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, db.GetConnection());
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, db.GetConnection());
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
@@ -55,9 +55,11 @@ namespace Casino_gym
                 db.OpenConnection();
 
                 string query = "DELETE FROM users WHERE id = @id";
-                MySqlCommand cmd = new MySqlCommand(query, db.GetConnection());
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
+                using (SQLiteCommand cmd = new SQLiteCommand(query, db.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
 
                 db.CloseConnection();
                 MessageBox.Show("Użytkownik usunięty.");
