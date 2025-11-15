@@ -51,7 +51,7 @@ namespace Casino_gym
             this.btnManageUsers_Click1.ForeColor = System.Drawing.Color.White;
 
             // Umieszczony w prawym górnym rogu
-            this.btnManageUsers_Click1.Location = new System.Drawing.Point(1904 - 180, 20);
+            this.btnManageUsers_Click1.Location = new System.Drawing.Point(1724, 20);
             this.btnManageUsers_Click1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             this.btnManageUsers_Click1.Name = "btnManageUsers_Click1";
             this.btnManageUsers_Click1.Size = new System.Drawing.Size(160, 40);
@@ -69,7 +69,7 @@ namespace Casino_gym
             this.btnLogout.ForeColor = System.Drawing.Color.White;
 
             // Obok panelu admina
-            this.btnLogout.Location = new System.Drawing.Point(1904 - 180, 70);
+            this.btnLogout.Location = new System.Drawing.Point(1724, 70);
             this.btnLogout.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
             this.btnLogout.Name = "btnLogout";
