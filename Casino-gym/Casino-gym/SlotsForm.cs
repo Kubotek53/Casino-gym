@@ -1,194 +1,221 @@
-﻿using Casino_gym;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Casino_gym
 {
     public partial class SlotsForm : Form
     {
+        // Zmienne gry
+        private Random rnd = new Random();
+        private List<Image> symbols = new List<Image>();
+        
+        // Indeksy aktualnie wyświetlanych obrazków (0-4)
+        private int reel1Index = 0;
+        private int reel2Index = 0;
+        private int reel3Index = 0;
+
+        // Zmienne do sterowania czasem (animacją)
+        private int ticks = 0;
+        private readonly int stopTicksReel1 = 20; // Kiedy staje 1 bęben
+        private readonly int stopTicksReel2 = 40; // Kiedy staje 2 bęben
+        private readonly int stopTicksReel3 = 60; // Kiedy staje 3 bęben (koniec)
+        
+        private bool spinning = false;
+
         public SlotsForm()
         {
             InitializeComponent();
+            LoadSymbols();
+            LoadSaldoToUI();
+
+            // Ustawienie startowych obrazków (jeśli są dostępne)
+            if (symbols.Count > 0)
+            {
+                UpdateReelImages();
+            }
+        }
+
+        private void LoadSymbols()
+        {
+            try
+            {
+                symbols.Clear();
+                // WAŻNE: Upewnij się, że masz te pliki w Resources.resx!
+                // Jeśli nazwałeś je inaczej, popraw tutaj nazwy (np. Resources.cherry)
+                symbols.Add(Properties.Resources.sym1);
+                symbols.Add(Properties.Resources.sym2);
+                symbols.Add(Properties.Resources.sym3);
+                symbols.Add(Properties.Resources.sym4);
+                symbols.Add(Properties.Resources.sym5);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd ładowania symboli! Sprawdź Resources.\n" + ex.Message);
+            }
+        }
+
+        private void LoadSaldoToUI()
+        {
+            // Upewnij się, że w Project -> Properties -> Settings masz ustawienie 'Saldo' (typ decimal)
+            decimal saldo = Properties.Settings.Default.Saldo;
+            lblSaldo.Text = $"Saldo: {saldo:C}"; // Formatowanie walutowe
+        }
+
+        private void SaveSaldo(decimal newSaldo)
+        {
+            Properties.Settings.Default.Saldo = newSaldo;
+            Properties.Settings.Default.Save();
+            LoadSaldoToUI();
+        }
+
+        private void btnSpin_Click(object sender, EventArgs e)
+        {
+            if (spinning) return; // Blokada podwójnego kliknięcia
+
+            decimal saldo = Properties.Settings.Default.Saldo;
+            decimal bet = nudBet.Value; // Upewnij się, że masz kontrolkę NumericUpDown o nazwie nudBet
+
+            if (bet <= 0)
+            {
+                MessageBox.Show("Stawka musi być większa niż 0!");
+                return;
+            }
+
+            if (saldo < bet)
+            {
+                MessageBox.Show("Brak wystarczających środków na koncie.");
+                return;
+            }
+
+            // Pobranie opłaty za spin
+            saldo -= bet;
+            SaveSaldo(saldo);
+
+            // Start animacji
+            StartSpinning();
+        }
+
+        private void StartSpinning()
+        {
+            spinning = true;
+            ticks = 0;
+            
+            // Losujemy początkowe przesunięcia, żeby bębny nie startowały zawsze z tego samego miejsca
+            reel1Index = rnd.Next(symbols.Count);
+            reel2Index = rnd.Next(symbols.Count);
+            reel3Index = rnd.Next(symbols.Count);
+
+            timerSpin.Interval = 50; // Prędkość obrotu (im mniej tym szybciej)
+            timerSpin.Start();
+        }
+
+        private void timerSpin_Tick(object sender, EventArgs e)
+        {
+            ticks++;
+
+            // --- LOGIKA ANIMACJI ---
+            
+            // Bęben 1 kręci się dopóki ticks jest mniejsze niż limit
+            if (ticks < stopTicksReel1)
+            {
+                reel1Index = (reel1Index + 1) % symbols.Count; // Przesuń o jeden symbol
+                pbReel1.Image = symbols[reel1Index];
+            }
+
+            // Bęben 2 kręci się dłużej
+            if (ticks < stopTicksReel2)
+            {
+                reel2Index = (reel2Index + 1) % symbols.Count;
+                pbReel2.Image = symbols[reel2Index];
+            }
+
+            // Bęben 3 kręci się najdłużej
+            if (ticks < stopTicksReel3)
+            {
+                reel3Index = (reel3Index + 1) % symbols.Count;
+                pbReel3.Image = symbols[reel3Index];
+            }
+
+            // --- KONIEC GRY ---
+            if (ticks >= stopTicksReel3)
+            {
+                timerSpin.Stop();
+                spinning = false;
+                EvaluateResult();
+            }
+        }
+
+        private void EvaluateResult()
+        {
+            decimal bet = nudBet.Value;
+            decimal payout = 0;
+
+            // Sprawdzamy wygraną na podstawie indeksów
+            // Indeksy odpowiadają konkretnym obrazkom z listy symbols
+            
+            if (reel1Index == reel2Index && reel2Index == reel3Index)
+            {
+                // JACKPOT: 3 takie same
+                payout = bet * 10; 
+                MessageBox.Show($"JACKPOT! Wygrywasz {payout:C}!");
+            }
+            else if (reel1Index == reel2Index || reel2Index == reel3Index || reel1Index == reel3Index)
+            {
+                // Para: 2 takie same
+                payout = bet * 2;
+                MessageBox.Show($"Dobra robota! Para. Wygrywasz {payout:C}!");
+            }
+            else
+            {
+                // Przegrana
+                // Opcjonalnie: jakiś dźwięk przegranej
+            }
+
+            if (payout > 0)
+            {
+                decimal currentSaldo = Properties.Settings.Default.Saldo;
+                SaveSaldo(currentSaldo + payout);
+            }
+        }
+
+        // Metoda pomocnicza do odświeżenia obrazków (np. przy starcie)
+        private void UpdateReelImages()
+        {
+            if (symbols.Count > 0)
+            {
+                pbReel1.Image = symbols[reel1Index];
+                pbReel2.Image = symbols[reel2Index];
+                pbReel3.Image = symbols[reel3Index];
+            }
+        }
+
+        // Przycisk "Dodaj monety" (cheat button do testów)
+        private void btnAddCoins_Click(object sender, EventArgs e)
+        {
+            decimal currentSaldo = Properties.Settings.Default.Saldo;
+            SaveSaldo(currentSaldo + 500);
+        }
+
+        private void btnSpin_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudBet_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSaldo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbReel3_Click(object sender, EventArgs e)
+        {
+
         }
     }
-}
-SlotsForm slots = new SlotsForm();
-slots.Show();
-
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
-public partial class SlotsForm : Form
-{
-    private Random rnd = new Random();
-    private List<Image> symbols;
-    private int reel1Index = 0, reel2Index = 0, reel3Index = 0;
-    private int ticks = 0;
-    private int stopTicksReel1 = 20, stopTicksReel2 = 32, stopTicksReel3 = 44;
-    private bool spinning = false;
-
-    public SlotsForm()
-    {
-        InitializeComponent();
-        LoadSymbols();
-        LoadSaldoToUI();
-        // ustawienie domyślnych obrazków
-        if (symbols.Count > 0)
-        {
-            pbReel1.Image = symbols[0];
-            pbReel2.Image = symbols[0];
-            pbReel3.Image = symbols[0];
-        }
-    }
-
-    private void LoadSymbols()
-    {
-        symbols = new List<Image>();
-        // Przykład: jeśli dodałeś do Resources nazwy sym1..sym5
-        symbols.Add(Properties.Resources.sym1);
-        symbols.Add(Properties.Resources.sym2);
-        symbols.Add(Properties.Resources.sym3);
-        symbols.Add(Properties.Resources.sym4);
-        symbols.Add(Properties.Resources.sym5);
-        // Dodaj lub zmień zgodnie ze swoimi zasobami
-    }
-
-    private void LoadSaldoToUI()
-    {
-        // Zakładam, że w Settings masz "Saldo" typu decimal lub int
-        decimal saldo = Properties.Settings.Default.Saldo;
-        lblSaldo.Text = $"Saldo: {saldo}";
-    }
-
-    private void SaveSaldo(decimal newSaldo)
-    {
-        Properties.Settings.Default.Saldo = newSaldo;
-        Properties.Settings.Default.Save();
-        lblSaldo.Text = $"Saldo: {newSaldo}";
-    }
-
-    private void btnSpin_Click(object sender, EventArgs e)
-    {
-        if (spinning) return;
-
-        decimal saldo = Properties.Settings.Default.Saldo;
-        decimal bet = nudBet.Value;
-
-        if (bet <= 0)
-        {
-            MessageBox.Show("Ustaw stawkę większą niż 0.");
-            return;
-        }
-
-        if (saldo < bet)
-        {
-            MessageBox.Show("Masz za mało środków.");
-            return;
-        }
-
-        // Pobierz stawkę
-        saldo -= bet;
-        SaveSaldo(saldo);
-
-        // Reset licznika i uruchom animację
-        ticks = 0;
-        spinning = true;
-        timerSpin.Interval = 80; // szybkość animacji
-        timerSpin.Start();
-    }
-
-    private void timerSpin_Tick(object sender, EventArgs e)
-    {
-        ticks++;
-
-        // Losujemy nowy obrazek dla każdego bębna (zmiana co tick)
-        reel1Index = (reel1Index + rnd.Next(1, symbols.Count)) % symbols.Count;
-        pbReel1.Image = symbols[reel1Index];
-
-        reel2Index = (reel2Index + rnd.Next(1, symbols.Count)) % symbols.Count;
-        pbReel2.Image = symbols[reel2Index];
-
-        reel3Index = (reel3Index + rnd.Next(1, symbols.Count)) % symbols.Count;
-        pbReel3.Image = symbols[reel3Index];
-
-        // Zatrzymujemy kolejne bębny po określonej liczbie ticków
-        if (ticks >= stopTicksReel1 && ticks < stopTicksReel2)
-        {
-            // zatrzymaj reel1 na losowym symbolu (fix)
-            // aby "udawać" stop, nie losujemy już reel1
-            // ale żeby wyglądało naturalnie, ustaw konkretny index
-            // (tu nic dodatkowego; po prostu nie zmieniamy reel1 później)
-        }
-
-        if (ticks >= stopTicksReel2 && ticks < stopTicksReel3)
-        {
-            // podobnie dla reel2
-        }
-
-        if (ticks >= stopTicksReel3)
-        {
-            // Koniec obrotu
-            timerSpin.Stop();
-            spinning = false;
-            EvaluateResult();
-        }
-    }
-
-    private void EvaluateResult()
-    {
-        // Sprawdź aktualne indeksy symboli
-        // Zakładamy, że pbReelX.Image jest jednym z symbols[i]
-        int i1 = reel1Index;
-        int i2 = reel2Index;
-        int i3 = reel3Index;
-
-        decimal bet = nudBet.Value;
-        decimal payout = 0;
-
-        // Prosty system wypłat:
-        // - 3 takie same: x5 stawki
-        // - 2 takie same: x2 stawki
-        // - inaczej: 0
-        if (i1 == i2 && i2 == i3)
-        {
-            payout = bet * 5;
-        }
-        else if (i1 == i2 || i1 == i3 || i2 == i3)
-        {
-            payout = bet * 2;
-        }
-
-        if (payout > 0)
-        {
-            decimal newSaldo = Properties.Settings.Default.Saldo + payout;
-            SaveSaldo(newSaldo);
-            MessageBox.Show($"Wygrałeś {payout}!");
-        }
-        else
-        {
-            MessageBox.Show("Niestety, nic tym razem.");
-        }
-    }
-
-    // Opcjonalnie: przycisk do doładowania (testowo)
-    private void btnAddCoins_Click(object sender, EventArgs e)
-    {
-        decimal s = Properties.Settings.Default.Saldo;
-        s += 50;
-        SaveSaldo(s);
-    }
-
-    // Upewnij się że eventy są podpięte:
-    // btnSpin.Click += btnSpin_Click;
-    // timerSpin.Tick += timerSpin_Tick;
-    // btnAddCoins.Click += btnAddCoins_Click;
 }
