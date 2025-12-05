@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -33,7 +33,7 @@ namespace Casino_gym
             using (GraphicsPath pathSurface = GetFigurePath(rectSurface, BorderRadius))
             using (GraphicsPath pathBorder = GetFigurePath(rectBorder, BorderRadius))
             using (LinearGradientBrush brushSurface = new LinearGradientBrush(rectSurface, GradientStartColor, GradientEndColor, 45F))
-            using (Pen penBorder = new Pen(this.Parent.BackColor, 2))
+            using (Pen penBorder = new Pen(this.Parent != null ? this.Parent.BackColor : Color.Gray, 2))
             {
                 // Button Surface
                 this.Region = new Region(pathSurface);
