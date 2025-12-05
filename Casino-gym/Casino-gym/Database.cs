@@ -68,6 +68,14 @@ namespace Casino_gym
                             role TEXT DEFAULT 'user',
                             balance REAL DEFAULT 0
                         );
+
+                        CREATE TABLE IF NOT EXISTS transactions (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            username TEXT NOT NULL,
+                            amount REAL NOT NULL,
+                            transaction_type TEXT NOT NULL,
+                            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                        );
                     ";
 
                     using (var cmd = new SQLiteCommand(sql, conn))

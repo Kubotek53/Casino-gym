@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Casino_gym
 {
@@ -20,6 +21,38 @@ namespace Casino_gym
             }
 
             LoadBalance();
+            LoadTransactionHistory();
+        }
+
+        // ======================
+        // ŁADOWANIE HISTORII
+        // ======================
+        private void LoadTransactionHistory()
+        {
+            try
+            {
+                Database db = new Database();
+                db.OpenConnection();
+
+                string query = "SELECT amount AS 'Kwota', transaction_type AS 'Typ', timestamp AS 'Data' FROM transactions WHERE username=@username ORDER BY timestamp DESC";
+
+                using (var cmd = new SQLiteCommand(query, db.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
+
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridViewHistory.DataSource = dt;
+                }
+
+                db.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd ładowania historii: " + ex.Message);
+            }
         }
 
         // ======================
@@ -70,9 +103,9 @@ namespace Casino_gym
                 return;
             }
 
-            if (amount > 100)
+            if (amount > 1000)
             {
-                MessageBox.Show("Maksymalna jednorazowa wpłata to 100 zł!", "Limit");
+                MessageBox.Show("Maksymalna jednorazowa wpłata to 1000 zł!", "Limit");
                 return;
             }
 
@@ -123,6 +156,14 @@ namespace Casino_gym
                     cmd.ExecuteNonQuery();
                 }
 
+                // Dodanie rekordu do historii transakcji
+                string historyQuery = "INSERT INTO transactions (username, amount, transaction_type) VALUES (@username, @amount, 'Wpłata')";
+                using (var cmd = new SQLiteCommand(historyQuery, db.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.ExecuteNonQuery();
+                }
                 db.CloseConnection();
 
                 MessageBox.Show("Wpłata zakończona pomyślnie.");

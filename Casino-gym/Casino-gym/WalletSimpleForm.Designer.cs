@@ -7,6 +7,8 @@
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Button btnDeposit;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DataGridView dataGridViewHistory;
+        private System.Windows.Forms.Label lblHistory;
 
         protected override void Dispose(bool disposing)
         {
@@ -21,11 +23,14 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.dataGridViewHistory = new System.Windows.Forms.DataGridView();
+            this.lblHistory = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).BeginInit();
             this.SuspendLayout();
 
             // === FORM ===
             this.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
-            this.ClientSize = new System.Drawing.Size(340, 260);
+            this.ClientSize = new System.Drawing.Size(340, 500);
             this.Name = "WalletSimpleForm";
             this.Text = "Portfel";
 
@@ -59,6 +64,27 @@
             this.btnDeposit.UseVisualStyleBackColor = false;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
 
+            // === LABEL HISTORIA ===
+            this.lblHistory.AutoSize = true;
+            this.lblHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblHistory.Location = new System.Drawing.Point(25, 260);
+            this.lblHistory.Name = "lblHistory";
+            this.lblHistory.Size = new System.Drawing.Size(180, 21);
+            this.lblHistory.TabIndex = 4;
+            this.lblHistory.Text = "Historia transakcji:";
+
+            // === DATA GRID VIEW ===
+            this.dataGridViewHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHistory.Location = new System.Drawing.Point(30, 290);
+            this.dataGridViewHistory.Name = "dataGridViewHistory";
+            this.dataGridViewHistory.Size = new System.Drawing.Size(270, 150);
+            this.dataGridViewHistory.TabIndex = 5;
+            this.dataGridViewHistory.ReadOnly = true;
+            this.dataGridViewHistory.AllowUserToAddRows = false;
+            this.dataGridViewHistory.RowHeadersVisible = false;
+            this.dataGridViewHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+
+
             // === PRZYCISK POWROT ===
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(30, 144, 255);
@@ -66,7 +92,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
-            this.btnBack.Location = new System.Drawing.Point(10, 210);
+            this.btnBack.Location = new System.Drawing.Point(10, 450);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 35);
             this.btnBack.TabIndex = 3;
@@ -79,6 +105,10 @@
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.dataGridViewHistory);
+            this.Controls.Add(this.lblHistory);
+            
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).EndInit();
 
             this.ResumeLayout(false);
             this.PerformLayout();

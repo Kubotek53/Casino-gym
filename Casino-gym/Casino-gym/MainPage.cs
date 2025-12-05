@@ -8,13 +8,24 @@ namespace Casino_gym
         public MainPage()
         {
             InitializeComponent();
+
+            // Dodajemy event do ładowania formularza
+            this.Load += MainPage_Load;
+        }
+
+        // ================================
+        // UKRYWANIE PRZYCISKU ADMINA
+        // ================================
+        private void MainPage_Load(object sender, EventArgs e)
+        {
+            // Jeśli użytkownik nie jest administratorem → ukryj przycisk
+            btnManageUsers_Click1.Visible = (Login.CurrentUserRole == "Administrator");
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // NATYCHMIAST zamyka aplikację
+            Application.Exit();
         }
-
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -52,6 +63,31 @@ namespace Casino_gym
             WalletSimpleForm wallet = new WalletSimpleForm(Login.CurrentLoggedUsername);
             wallet.Show();
             this.Close();
+        }
+
+        // ================================
+        // GRY
+        // ================================
+        private void btnPoker_Click(object sender, EventArgs e)
+        {
+            poker pokerForm = new poker();
+            pokerForm.Show();
+            this.Close();
+        }
+
+        private void btnBlackJack_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("BlackJack - Wkrótce dostępny!");
+        }
+
+        private void btnSlots_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Slots - Wkrótce dostępne!");
+        }
+
+        private void btnRoulette_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ruletka - Wkrótce dostępna!");
         }
     }
 }
