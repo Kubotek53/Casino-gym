@@ -66,7 +66,8 @@ namespace Casino_gym
                             username TEXT NOT NULL UNIQUE,
                             password TEXT NOT NULL,
                             role TEXT DEFAULT 'user',
-                            balance REAL DEFAULT 0
+                            balance REAL DEFAULT 0,
+                            age INTEGER
                         );
 
                         CREATE TABLE IF NOT EXISTS transactions (

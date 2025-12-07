@@ -19,11 +19,24 @@ namespace Casino_gym
         {
             string username = textboxUsername.Text.Trim().ToLower();
             string password = textboxPassword.Text.Trim();
+            string ageText = textboxAge.Text.Trim();
 
             // Sprawdzenie poprawności danych
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageText))
             {
                 MessageBox.Show("Proszę wypełnić wszystkie pola.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(ageText, out int age))
+            {
+                 MessageBox.Show("Wiek musi być liczbą.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 return;
+            }
+
+            if (age < 18)
+            {
+                MessageBox.Show("Musisz miec 18 lat by zagrac", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -51,11 +64,12 @@ namespace Casino_gym
 
                 // 2️⃣ Dodanie użytkownika (domyślna rola = "Użytkownik")
                 using (var insertCmd = new SQLiteCommand(
-                    "INSERT INTO users (username, password, role, balance) VALUES (@username, @password, @role, 100)", conn))
+                    "INSERT INTO users (username, password, role, balance, age) VALUES (@username, @password, @role, 100, @age)", conn))
                 {
                     insertCmd.Parameters.AddWithValue("@username", username);
                     insertCmd.Parameters.AddWithValue("@password", hashedPassword);
                     insertCmd.Parameters.AddWithValue("@role", "Użytkownik");
+                    insertCmd.Parameters.AddWithValue("@age", age);
 
                     int rowsAffected = insertCmd.ExecuteNonQuery();
 

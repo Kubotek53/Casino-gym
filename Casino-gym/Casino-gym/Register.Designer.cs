@@ -29,8 +29,10 @@
         {
             this.textboxUsername = new System.Windows.Forms.TextBox();
             this.textboxPassword = new System.Windows.Forms.TextBox();
+            this.textboxAge = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -49,6 +51,13 @@
             this.textboxPassword.PasswordChar = '*';
             this.textboxPassword.Size = new System.Drawing.Size(150, 20);
             this.textboxPassword.TabIndex = 1;
+            // 
+            // textboxAge
+            // 
+            this.textboxAge.Location = new System.Drawing.Point(120, 130);
+            this.textboxAge.Name = "textboxAge";
+            this.textboxAge.Size = new System.Drawing.Size(150, 20);
+            this.textboxAge.TabIndex = 2;
             // 
             // label1
             // 
@@ -69,6 +78,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Hasło:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 133);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Wiek:";
+            // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(25, 135, 84); // zielony (Bootstrap 'success')
@@ -76,7 +94,7 @@
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.ForeColor = System.Drawing.Color.White;
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRegister.Location = new System.Drawing.Point(110, 130);
+            this.btnRegister.Location = new System.Drawing.Point(110, 170);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(170, 40);
             this.btnRegister.TabIndex = 4;
@@ -93,7 +111,7 @@
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnBack.Location = new System.Drawing.Point(110, 190);
+            this.btnBack.Location = new System.Drawing.Point(110, 230);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(170, 40);
             this.btnBack.TabIndex = 5;
@@ -108,11 +126,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(334, 241);
+            this.ClientSize = new System.Drawing.Size(334, 300);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnRegister);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.textboxAge);
             this.Controls.Add(this.textboxPassword);
             this.Controls.Add(this.textboxUsername);
             this.Name = "Register";
@@ -126,8 +146,10 @@
 
         private System.Windows.Forms.TextBox textboxUsername;
         private System.Windows.Forms.TextBox textboxPassword;
+        private System.Windows.Forms.TextBox textboxAge;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnBack;
     }
