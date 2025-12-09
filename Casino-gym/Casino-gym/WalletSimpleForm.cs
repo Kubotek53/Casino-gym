@@ -75,12 +75,12 @@ namespace Casino_gym
 
                     if (result == null || result == DBNull.Value)
                     {
-                        lblBalance.Text = "Saldo: 0.00 zł";
+                        lblBalance.Text = "Saldo: 0.00 $";
                     }
                     else
                     {
                         decimal balance = Convert.ToDecimal(result);
-                        lblBalance.Text = $"Saldo: {balance:0.00} zł";
+                        lblBalance.Text = $"Saldo: {balance:0.00} $";
                     }
                 }
 
@@ -105,7 +105,7 @@ namespace Casino_gym
 
             if (amount > 1000)
             {
-                MessageBox.Show("Maksymalna jednorazowa wpłata to 1000 zł!", "Limit");
+                MessageBox.Show("Maksymalna jednorazowa wpłata to 1000 $!", "Limit");
                 return;
             }
 

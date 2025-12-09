@@ -77,7 +77,9 @@ namespace Casino_gym
 
         private void btnBlackJack_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("BlackJack - Wkrótce dostępny!");
+            Blackjack blackjackForm = new Blackjack(Login.CurrentLoggedUsername);
+            blackjackForm.Show();
+            this.Close();
         }
 
         private void btnSlots_Click(object sender, EventArgs e)
