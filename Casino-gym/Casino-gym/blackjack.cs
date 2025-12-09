@@ -128,7 +128,7 @@ namespace Casino_gym
             }
 
             // Deduct bet with log
-            UpdateBalance(-bet, "Blackjack - Zakład");
+            UpdateBalance(-bet, "Blackjack - Przegrana");
             StartRound((int)bet);
         }
 

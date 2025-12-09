@@ -42,109 +42,139 @@ namespace Casino_gym
             // 
             // listBoxPlayer
             // 
+            listBoxPlayer.BackColor = Color.White;
+            listBoxPlayer.Font = new Font("Segoe UI", 12F);
             listBoxPlayer.FormattingEnabled = true;
-            listBoxPlayer.Location = new Point(28, 83);
+            listBoxPlayer.ItemHeight = 21;
+            listBoxPlayer.Location = new Point(260, 250);
             listBoxPlayer.Name = "listBoxPlayer";
-            listBoxPlayer.Size = new Size(160, 154);
+            listBoxPlayer.Size = new Size(280, 150);
             listBoxPlayer.TabIndex = 0;
             // 
             // listBoxDealer
             // 
+            listBoxDealer.BackColor = Color.White;
+            listBoxDealer.Font = new Font("Segoe UI", 12F);
             listBoxDealer.FormattingEnabled = true;
-            listBoxDealer.Location = new Point(212, 83);
+            listBoxDealer.ItemHeight = 21;
+            listBoxDealer.Location = new Point(260, 50);
             listBoxDealer.Name = "listBoxDealer";
-            listBoxDealer.Size = new Size(160, 154);
+            listBoxDealer.Size = new Size(280, 150);
             listBoxDealer.TabIndex = 1;
             // 
             // btnDeal
             // 
-            btnDeal.Location = new Point(28, 270);
+            btnDeal.BackColor = Color.FromArgb(40, 167, 69); // Green
+            btnDeal.FlatStyle = FlatStyle.Flat;
+            btnDeal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnDeal.ForeColor = Color.White;
+            btnDeal.Location = new Point(50, 400);
             btnDeal.Name = "btnDeal";
-            btnDeal.Size = new Size(75, 30);
+            btnDeal.Size = new Size(120, 50);
             btnDeal.TabIndex = 2;
-            btnDeal.Text = "Deal";
-            btnDeal.UseVisualStyleBackColor = true;
+            btnDeal.Text = "DEAL";
+            btnDeal.UseVisualStyleBackColor = false;
             btnDeal.Click += btnDeal_Click;
             // 
             // btnHit
             // 
-            btnHit.Location = new Point(109, 270);
+            btnHit.BackColor = Color.FromArgb(0, 123, 255); // Blue
+            btnHit.FlatStyle = FlatStyle.Flat;
+            btnHit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnHit.ForeColor = Color.White;
+            btnHit.Location = new Point(190, 400);
             btnHit.Name = "btnHit";
-            btnHit.Size = new Size(75, 30);
+            btnHit.Size = new Size(120, 50);
             btnHit.TabIndex = 3;
-            btnHit.Text = "Hit";
-            btnHit.UseVisualStyleBackColor = true;
+            btnHit.Text = "HIT";
+            btnHit.UseVisualStyleBackColor = false;
             btnHit.Click += btnHit_Click;
             // 
             // btnStand
             // 
-            btnStand.Location = new Point(190, 270);
+            btnStand.BackColor = Color.FromArgb(220, 53, 69); // Red
+            btnStand.FlatStyle = FlatStyle.Flat;
+            btnStand.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnStand.ForeColor = Color.White;
+            btnStand.Location = new Point(330, 400);
             btnStand.Name = "btnStand";
-            btnStand.Size = new Size(75, 30);
+            btnStand.Size = new Size(120, 50);
             btnStand.TabIndex = 4;
-            btnStand.Text = "Stand";
-            btnStand.UseVisualStyleBackColor = true;
+            btnStand.Text = "STAND";
+            btnStand.UseVisualStyleBackColor = false;
             btnStand.Click += btnStand_Click;
             // 
             // numericBet
             // 
-            numericBet.Location = new Point(271, 276);
+            numericBet.Font = new Font("Segoe UI", 14F);
+            numericBet.Location = new Point(600, 410);
             numericBet.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericBet.Name = "numericBet";
-            numericBet.Size = new Size(101, 31);
+            numericBet.Size = new Size(120, 32);
             numericBet.TabIndex = 5;
+            numericBet.TextAlign = HorizontalAlignment.Center;
             numericBet.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // lblBankroll
             // 
             lblBankroll.AutoSize = true;
-            lblBankroll.Location = new Point(28, 20);
+            lblBankroll.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblBankroll.ForeColor = Color.Gold;
+            lblBankroll.Location = new Point(600, 20);
             lblBankroll.Name = "lblBankroll";
-            lblBankroll.Size = new Size(104, 25);
+            lblBankroll.Size = new Size(120, 25);
             lblBankroll.TabIndex = 6;
             lblBankroll.Text = "Bankroll: $0";
             // 
             // lblPlayerValue
             // 
             lblPlayerValue.AutoSize = true;
-            lblPlayerValue.Location = new Point(28, 45);
+            lblPlayerValue.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPlayerValue.ForeColor = Color.White;
+            lblPlayerValue.Location = new Point(260, 225);
             lblPlayerValue.Name = "lblPlayerValue";
-            lblPlayerValue.Size = new Size(95, 25);
+            lblPlayerValue.Size = new Size(81, 19);
             lblPlayerValue.TabIndex = 7;
             lblPlayerValue.Text = "Wartość: 0";
             // 
             // lblDealerValue
             // 
             lblDealerValue.AutoSize = true;
-            lblDealerValue.Location = new Point(209, 45);
+            lblDealerValue.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDealerValue.ForeColor = Color.White;
+            lblDealerValue.Location = new Point(260, 25);
             lblDealerValue.Name = "lblDealerValue";
-            lblDealerValue.Size = new Size(95, 25);
+            lblDealerValue.Size = new Size(81, 19);
             lblDealerValue.TabIndex = 8;
             lblDealerValue.Text = "Wartość: 0";
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(388, 270);
+            btnReset.Visible = false; // Hidden as requested
+            btnReset.Location = new Point(0, 0);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(75, 30);
+            btnReset.Size = new Size(0, 0);
             btnReset.TabIndex = 9;
             btnReset.Text = "Reset";
-            btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += btnReset_Click;
             // 
             // btnReturn
             // 
-            btnReturn.Location = new Point(388, 20);
+            btnReturn.BackColor = Color.DimGray;
+            btnReturn.FlatStyle = FlatStyle.Flat;
+            btnReturn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnReturn.ForeColor = Color.White;
+            btnReturn.Location = new Point(12, 12);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(75, 30);
             btnReturn.TabIndex = 10;
             btnReturn.Text = "Powrót";
-            btnReturn.UseVisualStyleBackColor = true;
+            btnReturn.UseVisualStyleBackColor = false;
             btnReturn.Click += btnReturn_Click;
             // 
             // Blackjack
             // 
-            ClientSize = new Size(490, 330);
+            ClientSize = new Size(800, 500);
+            BackColor = Color.FromArgb(45, 45, 45);
             Controls.Add(btnReturn);
             Controls.Add(btnReset);
             Controls.Add(lblDealerValue);
@@ -156,10 +186,11 @@ namespace Casino_gym
             Controls.Add(btnDeal);
             Controls.Add(listBoxDealer);
             Controls.Add(listBoxPlayer);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Name = "Blackjack";
-            Text = "Blackjack";
+            Text = "Blackjack Table";
             ((System.ComponentModel.ISupportInitialize)numericBet).EndInit();
             ResumeLayout(false);
             PerformLayout();
