@@ -28,9 +28,9 @@ namespace Casino_gym
                 return;
             }
 
-            if (!int.TryParse(ageText, out int age))
+            if (!int.TryParse(ageText, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out int age))
             {
-                 MessageBox.Show("Wiek musi być liczbą.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 MessageBox.Show($"Wiek musi być liczbą. Wpisano: '{ageText}'", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                  return;
             }
 

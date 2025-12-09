@@ -159,6 +159,12 @@
     <Compile Include="SlotsForm.Designer.cs">
       <DependentUpon>SlotsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpperLower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpperLower.Designer.cs">
+      <DependentUpon>UpperLower.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagment.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -45,55 +45,68 @@
             // 
             // pbReel1
             // 
-            this.pbReel1.Location = new System.Drawing.Point(105, 289);
+            this.pbReel1.Location = new System.Drawing.Point(220, 150);
             this.pbReel1.Name = "pbReel1";
-            this.pbReel1.Size = new System.Drawing.Size(92, 60);
+            this.pbReel1.Size = new System.Drawing.Size(100, 100);
+            this.pbReel1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbReel1.TabIndex = 0;
             this.pbReel1.TabStop = false;
             // 
             // pbReel2
             // 
-            this.pbReel2.Location = new System.Drawing.Point(337, 289);
+            this.pbReel2.Location = new System.Drawing.Point(350, 150);
             this.pbReel2.Name = "pbReel2";
-            this.pbReel2.Size = new System.Drawing.Size(94, 60);
+            this.pbReel2.Size = new System.Drawing.Size(100, 100);
+            this.pbReel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbReel2.TabIndex = 1;
             this.pbReel2.TabStop = false;
             // 
             // pbReel3
             // 
-            this.pbReel3.Location = new System.Drawing.Point(600, 289);
+            this.pbReel3.Location = new System.Drawing.Point(480, 150);
             this.pbReel3.Name = "pbReel3";
-            this.pbReel3.Size = new System.Drawing.Size(105, 60);
+            this.pbReel3.Size = new System.Drawing.Size(100, 100);
+            this.pbReel3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbReel3.TabIndex = 2;
             this.pbReel3.TabStop = false;
             this.pbReel3.Click += new System.EventHandler(this.pbReel3_Click);
             // 
             // btnSpin
             // 
-            this.btnSpin.Location = new System.Drawing.Point(937, 305);
+            this.btnSpin.BackColor = System.Drawing.Color.Gold;
+            this.btnSpin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSpin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSpin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSpin.ForeColor = System.Drawing.Color.Black;
+            this.btnSpin.Location = new System.Drawing.Point(300, 300);
             this.btnSpin.Name = "btnSpin";
-            this.btnSpin.Size = new System.Drawing.Size(75, 23);
+            this.btnSpin.Size = new System.Drawing.Size(200, 60);
             this.btnSpin.TabIndex = 3;
-            this.btnSpin.Text = "Spin";
-            this.btnSpin.UseVisualStyleBackColor = true;
+            this.btnSpin.Text = "SPIN";
+            this.btnSpin.UseVisualStyleBackColor = false;
             this.btnSpin.Click += new System.EventHandler(this.btnSpin_Click_1);
             // 
             // nudBet
             // 
-            this.nudBet.Location = new System.Drawing.Point(982, 63);
+            this.nudBet.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.nudBet.Location = new System.Drawing.Point(350, 80);
             this.nudBet.Name = "nudBet";
-            this.nudBet.Size = new System.Drawing.Size(75, 20);
+            this.nudBet.Size = new System.Drawing.Size(100, 29);
             this.nudBet.TabIndex = 4;
+            this.nudBet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudBet.ValueChanged += new System.EventHandler(this.nudBet_ValueChanged);
             // 
             // lblSaldo
             // 
             this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Location = new System.Drawing.Point(826, 63);
+            this.lblSaldo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSaldo.ForeColor = System.Drawing.Color.White;
+            this.lblSaldo.Location = new System.Drawing.Point(350, 50);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(32, 13);
+            this.lblSaldo.Size = new System.Drawing.Size(100, 21);
             this.lblSaldo.TabIndex = 5;
-            this.lblSaldo.Text = "saldo";
+            this.lblSaldo.Text = "Saldo: $0.00";
+            this.lblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblSaldo.Click += new System.EventHandler(this.lblSaldo_Click);
             // 
             // timerSpin
@@ -102,19 +115,25 @@
             // 
             // btnBack
             // 
+            this.btnBack.BackColor = System.Drawing.Color.DimGray;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(12, 12);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(75, 30);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Powrót";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // SlotsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1231, 706);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblSaldo);
             this.Controls.Add(this.nudBet);
@@ -122,8 +141,11 @@
             this.Controls.Add(this.pbReel3);
             this.Controls.Add(this.pbReel2);
             this.Controls.Add(this.pbReel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "SlotsForm";
-            this.Text = "SlotsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Slots Machine";
             ((System.ComponentModel.ISupportInitialize)(this.pbReel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbReel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbReel3)).EndInit();

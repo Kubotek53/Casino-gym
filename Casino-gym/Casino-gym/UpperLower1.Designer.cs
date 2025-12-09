@@ -1,4 +1,4 @@
-﻿namespace Casino_gym
+namespace Casino_gym
 {
     partial class UpperLower
     {

@@ -14,12 +14,14 @@ namespace Casino_gym
 
         public Database()
         {
-            // Jeśli baza nie istnieje → tworzymy
+            // Jeśli baza nie istnieje → tworzymy plik
             if (!File.Exists(dbPath))
             {
                 SQLiteConnection.CreateFile(dbPath);
-                CreateTables();
             }
+
+            // ZAWSZE upewniamy się, że tabele istnieją (nawet jeśli baza już była)
+            CreateTables();
 
             string connectionString = $"Data Source={dbPath};Version=3;";
             connection = new SQLiteConnection(connectionString);

@@ -1,10 +1,9 @@
-﻿using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Casino_gym
 {
@@ -42,7 +41,7 @@ namespace Casino_gym
                     object result = cmd.ExecuteScalar();
                     decimal balance = (result != null && result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
                     lblBalance.Text = $"Saldo: ${balance:0.00}";
-
+                    
                     // Adjust bet max to balance if needed, but not strictly required
                     if (balance < nudBet.Value && balance > 0) nudBet.Value = balance;
                 }
@@ -105,16 +104,16 @@ namespace Casino_gym
             decimal bet = nudBet.Value;
             if (bet <= 0) return;
 
-            // Check balance
+             // Check balance
             Database db = new Database();
             db.OpenConnection();
             string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
             decimal currentBalance = 0;
             using (var cmd = new SQLiteCommand(query, db.GetConnection()))
             {
-                cmd.Parameters.AddWithValue("@username", currentUser);
-                var result = cmd.ExecuteScalar();
-                if (result != null && result != DBNull.Value) currentBalance = Convert.ToDecimal(result);
+                 cmd.Parameters.AddWithValue("@username", currentUser);
+                 var result = cmd.ExecuteScalar();
+                 if (result != null && result != DBNull.Value) currentBalance = Convert.ToDecimal(result);
             }
             db.CloseConnection();
 
@@ -125,7 +124,7 @@ namespace Casino_gym
             }
 
             // Deduct bet
-            UpdateBalance(-bet, "Upper Lower - Przegrana");
+            UpdateBalance(-bet, "Upper Lower - Zakład");
 
             StartRound();
         }
@@ -162,7 +161,7 @@ namespace Casino_gym
             nextCard = DrawCard();
             // Show next card briefly or just result? For now, let's just show it.
             // Ideally we animate, but for simplicity we'll just swap and show result.
-
+            
             // Logic:
             // Higher wins if Next > Current
             // Lower wins if Next < Current
@@ -220,7 +219,7 @@ namespace Casino_gym
             else lblResult.ForeColor = Color.Red;
 
             MessageBox.Show(msg);
-
+            
             ResetGameUI();
             LoadBalance();
         }
@@ -259,7 +258,7 @@ namespace Casino_gym
             var ranks = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
             var d = new List<ULCard>();
             // Values: 2=2 ... 10=10, J=11, Q=12, K=13, A=14 (Ace high usually in High-Low)
-
+            
             foreach (var s in suits)
             {
                 for (int i = 0; i < ranks.Length; i++)
