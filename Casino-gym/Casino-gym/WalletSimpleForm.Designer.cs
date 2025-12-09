@@ -6,6 +6,7 @@
         private System.Windows.Forms.Label lblBalance;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btnWithdraw;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dataGridViewHistory;
         private System.Windows.Forms.Label lblHistory;
@@ -21,7 +22,9 @@
         {
             this.lblBalance = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
             this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnWithdraw = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dataGridViewHistory = new System.Windows.Forms.DataGridView();
             this.lblHistory = new System.Windows.Forms.Label();
@@ -64,6 +67,20 @@
             this.btnDeposit.UseVisualStyleBackColor = false;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
 
+            // === PRZYCISK WYPŁATY ===
+            this.btnWithdraw.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(200, 0, 0); // Red
+            this.btnWithdraw.ForeColor = System.Drawing.Color.White;
+            this.btnWithdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWithdraw.FlatAppearance.BorderSize = 0;
+            this.btnWithdraw.Location = new System.Drawing.Point(30, 195);
+            this.btnWithdraw.Name = "btnWithdraw";
+            this.btnWithdraw.Size = new System.Drawing.Size(270, 45);
+            this.btnWithdraw.TabIndex = 6;
+            this.btnWithdraw.Text = "Wypłać środki";
+            this.btnWithdraw.UseVisualStyleBackColor = false;
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
+
             // === LABEL HISTORIA ===
             this.lblHistory.AutoSize = true;
             this.lblHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
@@ -104,6 +121,7 @@
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.btnDeposit);
+            this.Controls.Add(this.btnWithdraw);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dataGridViewHistory);
             this.Controls.Add(this.lblHistory);

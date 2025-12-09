@@ -153,6 +153,12 @@
     <Compile Include="RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SlotsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SlotsForm.Designer.cs">
+      <DependentUpon>SlotsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,11 @@
     <Compile Include="WalletSimpleForm.Designer.cs">
       <DependentUpon>WalletSimpleForm.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\sym1.png" />
+    <Content Include="Resources\sym2.png" />
+    <Content Include="Resources\sym3.png" />
+    <Content Include="Resources\sym4.png" />
+    <Content Include="Resources\sym5.png" />
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>

@@ -95,6 +95,9 @@ namespace Casino_gym
         // ======================
         // WPŁATA
         // ======================
+        // ======================
+        // WPŁATA
+        // ======================
         private void btnDeposit_Click(object sender, EventArgs e)
         {
             if (!decimal.TryParse(txtAmount.Text, out decimal amount) || amount <= 0)
@@ -109,9 +112,51 @@ namespace Casino_gym
                 return;
             }
 
-            UpdateBalance(amount);
+            UpdateBalance(amount, "Wpłata");
         }
 
+        // ======================
+        // WYPŁATA
+        // ======================
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            if (!decimal.TryParse(txtAmount.Text, out decimal amount) || amount <= 0)
+            {
+                MessageBox.Show("Wprowadź poprawną kwotę!", "Błąd");
+                return;
+            }
+
+            // Check if sufficient funds
+            decimal currentBalance = GetCurrentBalance();
+
+            if (amount > currentBalance)
+            {
+                MessageBox.Show("Brak wystarczających środków na koncie.", "Błąd");
+                return;
+            }
+
+            UpdateBalance(-amount, "Wypłata");
+        }
+
+        private decimal GetCurrentBalance()
+        {
+             try
+            {
+                Database db = new Database();
+                db.OpenConnection();
+                string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
+                using (var cmd = new SQLiteCommand(query, db.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("@username", currentUsername);
+                    object result = cmd.ExecuteScalar();
+                    db.CloseConnection();
+                    if (result != null && result != DBNull.Value) return Convert.ToDecimal(result);
+                }
+                db.CloseConnection();
+            }
+             catch { }
+             return 0;
+        }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -123,7 +168,7 @@ namespace Casino_gym
         // ======================
         // AKTUALIZACJA SALDA
         // ======================
-        private void UpdateBalance(decimal amount)
+        private void UpdateBalance(decimal amount, string transactionType)
         {
             try
             {
@@ -157,23 +202,39 @@ namespace Casino_gym
                 }
 
                 // Dodanie rekordu do historii transakcji
-                string historyQuery = "INSERT INTO transactions (username, amount, transaction_type) VALUES (@username, @amount, 'Wpłata')";
+                string historyQuery = "INSERT INTO transactions (username, amount, transaction_type) VALUES (@username, @amount, @type)";
                 using (var cmd = new SQLiteCommand(historyQuery, db.GetConnection()))
                 {
                     cmd.Parameters.AddWithValue("@username", currentUsername);
-                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.Parameters.AddWithValue("@amount", amount); // Store the signed amount? Or just magnitude?
+                    // Typically deposit is +, withdrawal is -, but maybe for "Amount" column usually magnitude is best if type is explicit.
+                    // However, to keep math simple for "SUM" queries, signed is better.
+                    // But looking at existing code... wait, existing code was: UpdateBalance(amount). 
+                    // Let's stick to signed amount for logic consistency, or absolute?
+                    // "Wpłata" -> +100. "Wypłata" -> -50.
+                    // The history grid shows positive numbers usually? 
+                    // Let's store signed amount for now as it maps directly to balance change.
+                    // Wait, previous code: UpdateBalance(decimal amount).
+                    // btnDeposit called UpdateBalance(amount).
+                    // logic: newBalance = currentBalance + amount.
+                    // So deposit amount is positive.
+                    // withdrawal amount passed to UpdateBalance should be negative (-amount).
+                    // So @amount will be negative.
+                    
+                    cmd.Parameters.AddWithValue("@type", transactionType);
                     cmd.ExecuteNonQuery();
                 }
                 db.CloseConnection();
 
-                MessageBox.Show("Wpłata zakończona pomyślnie.");
+                MessageBox.Show($"{transactionType} zakończona pomyślnie.");
 
                 LoadBalance();
+                LoadTransactionHistory(); // Reload history to show new item
                 txtAmount.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Błąd podczas wpłaty: " + ex.Message);
+                MessageBox.Show("Błąd podczas transakcji: " + ex.Message);
             }
         }
     }

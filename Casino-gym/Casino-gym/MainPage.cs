@@ -84,7 +84,9 @@ namespace Casino_gym
 
         private void btnSlots_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Slots - Wkrótce dostępne!");
+            SlotsForm slotsForm = new SlotsForm(Login.CurrentLoggedUsername);
+            slotsForm.Show();
+            this.Close();
         }
 
         private void btnRoulette_Click(object sender, EventArgs e)
