@@ -93,5 +93,12 @@ namespace Casino_gym
         {
             MessageBox.Show("Ruletka - Wkrótce dostępna!");
         }
+
+        private void btnUpperLower_Click(object sender, EventArgs e)
+        {
+            UpperLower game = new UpperLower(Login.CurrentLoggedUsername);
+            game.Show();
+            this.Close();
+        }
     }
 }

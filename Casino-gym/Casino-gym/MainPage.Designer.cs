@@ -24,6 +24,7 @@ namespace Casino_gym
             this.btnBlackJack = new Casino_gym.RoundedButton();
             this.btnSlots = new Casino_gym.RoundedButton();
             this.btnRoulette = new Casino_gym.RoundedButton();
+            this.btnUpperLower = new Casino_gym.RoundedButton();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -154,11 +155,30 @@ namespace Casino_gym
             this.btnRoulette.UseVisualStyleBackColor = false;
             this.btnRoulette.Click += new System.EventHandler(this.btnRoulette_Click);
             // 
+            // btnUpperLower
+            // 
+            this.btnUpperLower.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpperLower.BorderRadius = 40;
+            this.btnUpperLower.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpperLower.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpperLower.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.btnUpperLower.ForeColor = System.Drawing.Color.White;
+            this.btnUpperLower.GradientEndColor = System.Drawing.Color.Purple;
+            this.btnUpperLower.GradientStartColor = System.Drawing.Color.Magenta;
+            this.btnUpperLower.Location = new System.Drawing.Point(827, 710);
+            this.btnUpperLower.Name = "btnUpperLower";
+            this.btnUpperLower.Size = new System.Drawing.Size(250, 70);
+            this.btnUpperLower.TabIndex = 7;
+            this.btnUpperLower.Text = "Upper Lower";
+            this.btnUpperLower.UseVisualStyleBackColor = false;
+            this.btnUpperLower.Click += new System.EventHandler(this.btnUpperLower_Click);
+            // 
             // MainPage
             // 
             this.BackgroundImage = global::Casino_gym.Properties.Resources.cas;
             this.ClientSize = new System.Drawing.Size(1904, 1011);
             this.Controls.Add(this.btnRoulette);
+            this.Controls.Add(this.btnUpperLower);
             this.Controls.Add(this.btnSlots);
             this.Controls.Add(this.btnBlackJack);
             this.Controls.Add(this.btnPoker);
@@ -177,5 +197,6 @@ namespace Casino_gym
         private Casino_gym.RoundedButton btnBlackJack;
         private Casino_gym.RoundedButton btnSlots;
         private Casino_gym.RoundedButton btnRoulette;
+        private Casino_gym.RoundedButton btnUpperLower;
     }
 }
