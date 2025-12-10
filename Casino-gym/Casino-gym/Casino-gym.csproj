@@ -153,6 +153,12 @@
     <Compile Include="RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Ruletka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ruletka.Designer.cs">
+      <DependentUpon>Ruletka.cs</DependentUpon>
+    </Compile>
     <Compile Include="SlotsForm.cs">
       <SubType>Form</SubType>
     </Compile>

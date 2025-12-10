@@ -38,10 +38,7 @@ namespace Casino_gym
             try
             {
                 symbols.Clear();
-                // Load images from file system to avoid incomplete Resources.resx issues
                 string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-                // Assuming standard project structure: bin/Debug -> ../../Resources
-                // Adjusting path to go up two levels from bin/Debug (or Release)
                 string resourcesPath = System.IO.Path.Combine(baseDir, "..", "..", "Resources");
                 
                 string[] files = { "sym1.png", "sym2.png", "sym3.png", "sym4.png", "sym5.png" };
@@ -55,17 +52,13 @@ namespace Casino_gym
                     }
                     else
                     {
-                        // Fallback or skip
-                         // Try checking direct path if running from source root? 
-                         // No, BaseDirectory is reliable for running app.
-                         // Let's just not add if missing to avoid crash, but show warning maybe?
+
                     }
                 }
                 
                 if (symbols.Count == 0)
                 {
-                     // Fallback to colors or text if no images?
-                     // Or assume at least one exists.
+
                 }
             }
             catch (Exception ex)
@@ -103,7 +96,7 @@ namespace Casino_gym
                 Database db = new Database();
                 db.OpenConnection();
 
-                // Get current balance
+
                 decimal currentBalance = 0;
                 string getQuery = "SELECT balance FROM users WHERE username=@username LIMIT 1";
                 using (var cmd = new SQLiteCommand(getQuery, db.GetConnection()))
@@ -123,7 +116,7 @@ namespace Casino_gym
                     cmd.ExecuteNonQuery();
                 }
 
-                // Add transaction history
+
                 string historyQuery = "INSERT INTO transactions (username, amount, transaction_type) VALUES (@username, @amount, @type)";
                 using (var cmd = new SQLiteCommand(historyQuery, db.GetConnection()))
                 {
@@ -196,7 +189,7 @@ namespace Casino_gym
             }
             else
             {
-                // Loss case
+
                 MessageBox.Show($"Przegrałeś ${bet:0.00}", "Przegrana", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -228,7 +221,7 @@ namespace Casino_gym
                 return;
             }
 
-            // Check balance
+
             Database db = new Database();
             db.OpenConnection();
             string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";

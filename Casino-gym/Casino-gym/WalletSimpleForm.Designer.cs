@@ -31,13 +31,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).BeginInit();
             this.SuspendLayout();
 
-            // === FORM ===
             this.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
             this.ClientSize = new System.Drawing.Size(340, 500);
             this.Name = "WalletSimpleForm";
             this.Text = "Portfel";
 
-            // === LABEL SALDO ===
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblBalance.Location = new System.Drawing.Point(25, 25);
@@ -46,14 +44,12 @@
             this.lblBalance.TabIndex = 0;
             this.lblBalance.Text = "Saldo: --- zł";
 
-            // === POLE KWOTY ===
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.txtAmount.Location = new System.Drawing.Point(30, 90);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(270, 32);
             this.txtAmount.TabIndex = 1;
 
-            // === PRZYCISK WPŁATY ===
             this.btnDeposit.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.btnDeposit.BackColor = System.Drawing.Color.FromArgb(0, 150, 0);
             this.btnDeposit.ForeColor = System.Drawing.Color.White;
@@ -67,7 +63,6 @@
             this.btnDeposit.UseVisualStyleBackColor = false;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
 
-            // === PRZYCISK WYPŁATY ===
             this.btnWithdraw.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.btnWithdraw.BackColor = System.Drawing.Color.FromArgb(200, 0, 0); // Red
             this.btnWithdraw.ForeColor = System.Drawing.Color.White;
@@ -81,7 +76,6 @@
             this.btnWithdraw.UseVisualStyleBackColor = false;
             this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
 
-            // === LABEL HISTORIA ===
             this.lblHistory.AutoSize = true;
             this.lblHistory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblHistory.Location = new System.Drawing.Point(25, 260);
@@ -90,7 +84,6 @@
             this.lblHistory.TabIndex = 4;
             this.lblHistory.Text = "Historia transakcji:";
 
-            // === DATA GRID VIEW ===
             this.dataGridViewHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHistory.Location = new System.Drawing.Point(30, 290);
             this.dataGridViewHistory.Name = "dataGridViewHistory";
@@ -101,8 +94,6 @@
             this.dataGridViewHistory.RowHeadersVisible = false;
             this.dataGridViewHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 
-
-            // === PRZYCISK POWROT ===
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnBack.BackColor = System.Drawing.Color.FromArgb(30, 144, 255);
             this.btnBack.ForeColor = System.Drawing.Color.White;
@@ -117,7 +108,6 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
 
-            // === ADD TO FORM ===
             this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.btnDeposit);

@@ -9,16 +9,11 @@ namespace Casino_gym
         {
             InitializeComponent();
 
-            // Dodajemy event do ładowania formularza
             this.Load += MainPage_Load;
         }
 
-        // ================================
-        // UKRYWANIE PRZYCISKU ADMINA
-        // ================================
         private void MainPage_Load(object sender, EventArgs e)
         {
-            // Jeśli użytkownik nie jest administratorem → ukryj przycisk
             btnManageUsers_Click1.Visible = (Login.CurrentUserRole == "Administrator");
         }
 
@@ -32,9 +27,6 @@ namespace Casino_gym
             Application.Exit();
         }
 
-        // ================================
-        // PANEL ADMINA
-        // ================================
         private void button1_Click(object sender, EventArgs e)
         {
             if (Login.CurrentUserRole == "Administrator")
@@ -49,9 +41,6 @@ namespace Casino_gym
             }
         }
 
-        // ================================
-        // PORTFEL
-        // ================================
         private void Wallet_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Login.CurrentLoggedUsername))
@@ -65,9 +54,6 @@ namespace Casino_gym
             this.Close();
         }
 
-        // ================================
-        // GRY
-        // ================================
         private void btnPoker_Click(object sender, EventArgs e)
         {
             poker pokerForm = new poker();
@@ -91,7 +77,9 @@ namespace Casino_gym
 
         private void btnRoulette_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ruletka - Wkrótce dostępna!");
+            Ruletka rouletteForm = new Ruletka(Login.CurrentLoggedUsername);
+            rouletteForm.Show();
+            this.Close();
         }
 
         private void btnUpperLower_Click(object sender, EventArgs e)

@@ -21,7 +21,6 @@ namespace Casino_gym
             string password = textboxPassword.Text.Trim();
             string ageText = textboxAge.Text.Trim();
 
-            // Sprawdzenie poprawności danych
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageText))
             {
                 MessageBox.Show("Proszę wypełnić wszystkie pola.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -40,7 +39,6 @@ namespace Casino_gym
                 return;
             }
 
-            // Hashowanie hasła
             string hashedPassword = GetSHA256(password);
 
             try
@@ -48,7 +46,6 @@ namespace Casino_gym
                 db.OpenConnection();
                 SQLiteConnection conn = db.GetConnection();
 
-                // 1️⃣ Sprawdzenie, czy użytkownik już istnieje
                 using (var checkCmd = new SQLiteCommand("SELECT COUNT(*) FROM users WHERE LOWER(username)=@username", conn))
                 {
                     checkCmd.Parameters.AddWithValue("@username", username);
@@ -62,7 +59,6 @@ namespace Casino_gym
                     }
                 }
 
-                // 2️⃣ Dodanie użytkownika (domyślna rola = "Użytkownik")
                 using (var insertCmd = new SQLiteCommand(
                     "INSERT INTO users (username, password, role, balance, age) VALUES (@username, @password, @role, 100, @age)", conn))
                 {
@@ -103,7 +99,6 @@ namespace Casino_gym
             this.Close();
         }
 
-        // Hashowanie SHA256
         private static string GetSHA256(string input)
         {
             using (SHA256 sha256 = SHA256.Create())

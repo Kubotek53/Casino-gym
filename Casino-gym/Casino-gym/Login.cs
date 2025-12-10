@@ -9,7 +9,7 @@ namespace Casino_gym
     public partial class Login : Form
     {
         public static string CurrentUserRole = "guest";
-        public static string CurrentLoggedUsername = ""; // kto jest zalogowany
+        public static string CurrentLoggedUsername = ""; 
 
         Database db = new Database();
 
@@ -29,17 +29,14 @@ namespace Casino_gym
         }
         private void textboxUsername_TextChanged(object sender, EventArgs e)
         {
-            // nic - placeholder
         }
 
         private void textboxPassword_TextChanged_1(object sender, EventArgs e)
         {
-            // nic - placeholder
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            // nic - placeholder
         }
 
 

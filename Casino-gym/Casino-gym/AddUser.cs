@@ -36,7 +36,6 @@ namespace Casino_gym
                 db.OpenConnection();
                 SQLiteConnection conn = db.GetConnection();
 
-                // Sprawdzenie, czy użytkownik już istnieje
                 string checkQuery = "SELECT COUNT(*) FROM users WHERE LOWER(username)=@username";
                 using (SQLiteCommand checkCmd = new SQLiteCommand(checkQuery, conn))
                 {
@@ -51,7 +50,6 @@ namespace Casino_gym
                     }
                 }
 
-                // Dodanie użytkownika
                 string insertQuery = "INSERT INTO users (username, password, role) VALUES (@username, @password, @role)";
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
                 {

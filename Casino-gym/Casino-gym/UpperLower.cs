@@ -11,7 +11,7 @@ namespace Casino_gym
     public partial class UpperLower : Form
     {
         private string currentUser;
-        private List<ULCard> deck; // Using simple internal card class
+        private List<ULCard> deck; 
         private ULCard currentCard;
         private ULCard nextCard;
         private Random rng = new Random();
@@ -25,9 +25,7 @@ namespace Casino_gym
             ResetGameUI();
         }
 
-        // ======================
-        // DATABASE METHODS
-        // ======================
+
 
         private void LoadBalance()
         {
@@ -43,7 +41,7 @@ namespace Casino_gym
                     decimal balance = (result != null && result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
                     lblBalance.Text = $"Saldo: ${balance:0.00}";
 
-                    // Adjust bet max to balance if needed, but not strictly required
+
                     if (balance < nudBet.Value && balance > 0) nudBet.Value = balance;
                 }
                 db.CloseConnection();
@@ -96,16 +94,14 @@ namespace Casino_gym
             }
         }
 
-        // ======================
-        // GAME LOGIC
-        // ======================
+
 
         private void btnDeal_Click(object sender, EventArgs e)
         {
             decimal bet = nudBet.Value;
             if (bet <= 0) return;
 
-            // Check balance
+
             Database db = new Database();
             db.OpenConnection();
             string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
@@ -124,7 +120,6 @@ namespace Casino_gym
                 return;
             }
 
-            // Deduct bet
             UpdateBalance(-bet, "Upper Lower - Przegrana");
 
             StartRound();
@@ -160,14 +155,7 @@ namespace Casino_gym
         private void ResolveRound(bool guessedHigher)
         {
             nextCard = DrawCard();
-            // Show next card briefly or just result? For now, let's just show it.
-            // Ideally we animate, but for simplicity we'll just swap and show result.
 
-            // Logic:
-            // Higher wins if Next > Current
-            // Lower wins if Next < Current
-            // Tie (Next == Current) -> Push (Stake returned) or Loss?
-            // Let's implement Push for fairness.
 
             string msg = "";
             decimal bet = nudBet.Value;
@@ -185,12 +173,12 @@ namespace Casino_gym
                 if (guessedHigher) win = false;
                 else win = true;
             }
-            else // Tie
+            else 
             {
                 push = true;
             }
 
-            // Show new card
+
             ShowCard(nextCard);
 
             if (push)
@@ -201,7 +189,7 @@ namespace Casino_gym
             else if (win)
             {
                 msg = $"Wygrana! ({currentCard} -> {nextCard}).";
-                winnings = bet * 2; // Double money
+                winnings = bet * 2; 
             }
             else
             {
@@ -249,16 +237,14 @@ namespace Casino_gym
             this.Close();
         }
 
-        // ======================
-        // DECK LOGIC
-        // ======================
+
 
         private List<ULCard> CreateDeck()
         {
             var suits = new[] { "♠", "♥", "♦", "♣" };
             var ranks = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
             var d = new List<ULCard>();
-            // Values: 2=2 ... 10=10, J=11, Q=12, K=13, A=14 (Ace high usually in High-Low)
+
 
             foreach (var s in suits)
             {

@@ -59,7 +59,6 @@ namespace Casino_gym
                 Database db = new Database();
                 db.OpenConnection();
 
-                // Get current balance
                 decimal currentBalance = 0;
                 string getQuery = "SELECT balance FROM users WHERE username=@username LIMIT 1";
                 using (var cmd = new SQLiteCommand(getQuery, db.GetConnection()))
@@ -79,7 +78,6 @@ namespace Casino_gym
                     cmd.ExecuteNonQuery();
                 }
 
-                // Add transaction history
                 string historyQuery = "INSERT INTO transactions (username, amount, transaction_type) VALUES (@username, @amount, @type)";
                 using (var cmd = new SQLiteCommand(historyQuery, db.GetConnection()))
                 {
@@ -90,7 +88,7 @@ namespace Casino_gym
                 }
 
                 db.CloseConnection();
-                LoadBalance(); // Refresh UI
+                LoadBalance(); 
             }
             catch (Exception ex)
             {
@@ -108,7 +106,6 @@ namespace Casino_gym
                 return;
             }
             
-            // Re-check balance
             Database db = new Database();
             db.OpenConnection();
             string query = "SELECT balance FROM users WHERE username=@username LIMIT 1";
@@ -127,7 +124,6 @@ namespace Casino_gym
                  return;
             }
 
-            // Deduct bet with log
             UpdateBalance(-bet, "Blackjack - Przegrana");
             StartRound((int)bet);
         }
@@ -208,17 +204,16 @@ namespace Casino_gym
             if (playerVal > 21)
             {
                 msg = $"Przegrałeś — przekroczyłeś 21 ({playerVal}). Strata ${bet}.";
-                // Already deducted on Deal
             }
             else if (dealerVal > 21)
             {
                 msg = $"Dealer przegrał ({dealerVal}). Wygrałeś ${bet}!";
-                winnings = bet * 2; // Return bet + win
+                winnings = bet * 2; 
             }
             else if (playerVal == dealerVal)
             {
                 msg = $"Remis ({playerVal}). Stawka zwrócona.";
-                winnings = bet; // Return bet
+                winnings = bet; 
             }
             else
             {
@@ -251,7 +246,6 @@ namespace Casino_gym
             }
             else
             {
-                // Just refresh to be sure
                 LoadBalance();
             }
 
@@ -261,7 +255,6 @@ namespace Casino_gym
 
         private void EndRound(bool bust)
         {
-            // Called when player busts immediately (already deducted bet)
             int bet = (int)numericBet.Value;
             UpdateHandsDisplay(showDealerHoleCard: true);
             MessageBox.Show($"Przekroczyłeś 21 — przegrana ${bet}.", "Bust");
@@ -276,7 +269,6 @@ namespace Casino_gym
             btnStand.Enabled = false;
             btnDeal.Enabled = true;
             numericBet.Enabled = true;
-            // numericBet.Maximum updated in LoadBalance
         }
 
         private void UpdateHandsDisplay(bool showDealerHoleCard)
@@ -361,11 +353,6 @@ namespace Casino_gym
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            // Resetting bankroll to 1000 is not appropriate if we are using real DB balance.
-            // Maybe remove this button or make it just reset the UI state?
-            // The prompt asks to read balance from casino.db. 
-            // "Reset" typically means cheat/debug in the standalone version.
-            // I'll disable the functionality or show a message.
             MessageBox.Show("Nie można zresetować salda w trybie online. Użyj portfela, aby doładować konto.");
         }
 
