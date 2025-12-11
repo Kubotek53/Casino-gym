@@ -26,7 +26,6 @@ namespace Casino_gym
         {
             isLoggingOut = true;
             
-            // Try to find the existing hidden Login form
             bool found = false;
             foreach (Form form in Application.OpenForms)
             {
@@ -86,10 +85,7 @@ namespace Casino_gym
 
         private void btnPoker_Click(object sender, EventArgs e)
         {
-            isNavigatingToGame = true;
-            poker pokerForm = new poker();
-            pokerForm.Show();
-            this.Close();
+            MessageBox.Show("Gra chwilowo nie dostępna :(");
         }
 
         private void btnBlackJack_Click(object sender, EventArgs e)
