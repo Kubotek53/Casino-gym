@@ -26,9 +26,7 @@ namespace Casino_gym
             this.btnManageUsers_Click1 = new Casino_gym.RoundedButton();
             this.btnLogout = new Casino_gym.RoundedButton();
             this.SuspendLayout();
-            // 
-            // btnRoulette
-            // 
+          
             this.btnRoulette.BackColor = System.Drawing.Color.Transparent;
             this.btnRoulette.BorderRadius = 40;
             this.btnRoulette.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -44,9 +42,7 @@ namespace Casino_gym
             this.btnRoulette.Text = "Ruletka";
             this.btnRoulette.UseVisualStyleBackColor = false;
             this.btnRoulette.Click += new System.EventHandler(this.btnRoulette_Click);
-            // 
-            // btnUpperLower
-            // 
+           
             this.btnUpperLower.BackColor = System.Drawing.Color.Transparent;
             this.btnUpperLower.BorderRadius = 40;
             this.btnUpperLower.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -62,9 +58,7 @@ namespace Casino_gym
             this.btnUpperLower.Text = "Upper Lower";
             this.btnUpperLower.UseVisualStyleBackColor = false;
             this.btnUpperLower.Click += new System.EventHandler(this.btnUpperLower_Click);
-            // 
-            // btnSlots
-            // 
+          
             this.btnSlots.BackColor = System.Drawing.Color.Transparent;
             this.btnSlots.BorderRadius = 40;
             this.btnSlots.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -80,9 +74,7 @@ namespace Casino_gym
             this.btnSlots.Text = "Slots";
             this.btnSlots.UseVisualStyleBackColor = false;
             this.btnSlots.Click += new System.EventHandler(this.btnSlots_Click);
-            // 
-            // btnBlackJack
-            // 
+          
             this.btnBlackJack.BackColor = System.Drawing.Color.Transparent;
             this.btnBlackJack.BorderRadius = 40;
             this.btnBlackJack.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -98,9 +90,7 @@ namespace Casino_gym
             this.btnBlackJack.Text = "BlackJack";
             this.btnBlackJack.UseVisualStyleBackColor = false;
             this.btnBlackJack.Click += new System.EventHandler(this.btnBlackJack_Click);
-            // 
-            // btnPoker
-            // 
+         
             this.btnPoker.BackColor = System.Drawing.Color.Transparent;
             this.btnPoker.BorderRadius = 40;
             this.btnPoker.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -116,9 +106,7 @@ namespace Casino_gym
             this.btnPoker.Text = "Poker";
             this.btnPoker.UseVisualStyleBackColor = false;
             this.btnPoker.Click += new System.EventHandler(this.btnPoker_Click);
-            // 
-            // Wallet
-            // 
+           
             this.Wallet.BackColor = System.Drawing.Color.Transparent;
             this.Wallet.BorderRadius = 40;
             this.Wallet.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -134,9 +122,7 @@ namespace Casino_gym
             this.Wallet.Text = "Konto";
             this.Wallet.UseVisualStyleBackColor = false;
             this.Wallet.Click += new System.EventHandler(this.Wallet_Click);
-            // 
-            // btnManageUsers_Click1
-            // 
+          
             this.btnManageUsers_Click1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnManageUsers_Click1.BackColor = System.Drawing.Color.Transparent;
             this.btnManageUsers_Click1.BorderRadius = 40;
@@ -153,9 +139,7 @@ namespace Casino_gym
             this.btnManageUsers_Click1.Text = "Panel administratora";
             this.btnManageUsers_Click1.UseVisualStyleBackColor = false;
             this.btnManageUsers_Click1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnLogout
-            // 
+         
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
             this.btnLogout.BorderRadius = 40;
@@ -172,9 +156,7 @@ namespace Casino_gym
             this.btnLogout.Text = "Wyloguj się";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // MainPage
-            // 
+         
             this.BackgroundImage = global::Casino_gym.Properties.Resources.gr;
             this.ClientSize = new System.Drawing.Size(1904, 1011);
             this.Controls.Add(this.btnRoulette);

@@ -75,7 +75,7 @@ namespace Casino_gym
                             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                         );
 
-                        -- Naprawa błędu wielkości liter dla administratora (jeśli istnieje stara wersja)
+                        
                         UPDATE users SET username='administrator', role='Administrator' WHERE username='Administrator';
 
                         INSERT OR IGNORE INTO users (username, password, role, balance, age) 
