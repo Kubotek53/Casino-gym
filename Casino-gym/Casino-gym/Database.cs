@@ -74,6 +74,12 @@ namespace Casino_gym
                             transaction_type TEXT NOT NULL,
                             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                         );
+
+                        -- Naprawa błędu wielkości liter dla administratora (jeśli istnieje stara wersja)
+                        UPDATE users SET username='administrator', role='Administrator' WHERE username='Administrator';
+
+                        INSERT OR IGNORE INTO users (username, password, role, balance, age) 
+                        VALUES ('administrator', 'bdd2297f93550f01452cbd838c276f0dd22f498b4661394f1528ab88d6e63e6f', 'Administrator', 100, 18);
                     ";
 
                     using (var cmd = new SQLiteCommand(sql, conn))

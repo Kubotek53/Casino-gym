@@ -10,6 +10,7 @@ namespace Casino_gym
         public UserManagement()
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
         }
 
         private void UserManagement_Load(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace Casino_gym
         public UpperLower(string username)
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
             currentUser = username;
             LoadBalance();
             ResetGameUI();

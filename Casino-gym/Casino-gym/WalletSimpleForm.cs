@@ -12,6 +12,7 @@ namespace Casino_gym
         public WalletSimpleForm(string username)
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
             currentUsername = username;
 
             if (string.IsNullOrEmpty(currentUsername))

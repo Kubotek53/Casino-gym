@@ -11,6 +11,7 @@ namespace Casino_gym
         public MainPage()
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
 
             this.Load += MainPage_Load;
             this.FormClosed += MainForm_FormClosed;

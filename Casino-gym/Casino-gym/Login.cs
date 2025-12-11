@@ -16,6 +16,7 @@ namespace Casino_gym
         public Login()
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

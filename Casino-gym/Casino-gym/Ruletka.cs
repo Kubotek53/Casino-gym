@@ -19,6 +19,7 @@ namespace Casino_gym
         public Ruletka(string username)
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
             currentUser = username;
             LoadBalance();
             InitCasinoTable();

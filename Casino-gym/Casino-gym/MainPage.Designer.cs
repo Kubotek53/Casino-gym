@@ -146,7 +146,7 @@ namespace Casino_gym
             this.btnManageUsers_Click1.ForeColor = System.Drawing.Color.White;
             this.btnManageUsers_Click1.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.btnManageUsers_Click1.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
-            this.btnManageUsers_Click1.Location = new System.Drawing.Point(1608, 761);
+            this.btnManageUsers_Click1.Location = new System.Drawing.Point(21, 12);
             this.btnManageUsers_Click1.Name = "btnManageUsers_Click1";
             this.btnManageUsers_Click1.Size = new System.Drawing.Size(272, 50);
             this.btnManageUsers_Click1.TabIndex = 1;

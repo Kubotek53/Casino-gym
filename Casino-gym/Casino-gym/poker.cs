@@ -15,6 +15,7 @@ namespace Casino_gym
         public poker()
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Casino_gym
         public SlotsForm(string username)
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
             currentUser = username;
             LoadSymbols();
             LoadSaldoToUI();

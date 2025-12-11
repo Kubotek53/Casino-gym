@@ -18,6 +18,7 @@ namespace Casino_gym
         public Blackjack(string username)
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
             currentUser = username;
             InitGame();
         }

@@ -13,6 +13,7 @@ namespace Casino_gym
         public Register()
         {
             InitializeComponent();
+            ResponsiveHelper.MakeResponsive(this);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
