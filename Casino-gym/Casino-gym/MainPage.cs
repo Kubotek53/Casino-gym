@@ -5,11 +5,15 @@ namespace Casino_gym
 {
     public partial class MainPage : Form
     {
+        private bool isLoggingOut = false;
+        private bool isNavigatingToGame = false;
+
         public MainPage()
         {
             InitializeComponent();
 
             this.Load += MainPage_Load;
+            this.FormClosed += MainForm_FormClosed;
         }
 
         private void MainPage_Load(object sender, EventArgs e)
@@ -19,18 +23,42 @@ namespace Casino_gym
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            isLoggingOut = true;
+            
+            // Try to find the existing hidden Login form
+            bool found = false;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is Login)
+                {
+                    form.Show();
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                Login login = new Login();
+                login.Show();
+            }
+
+            this.Close();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (!isLoggingOut && !isNavigatingToGame)
+            {
+                Application.Exit();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (Login.CurrentUserRole == "Administrator")
             {
+                isNavigatingToGame = true;
                 UserManagement panel = new UserManagement();
                 panel.Show();
                 this.Close();
@@ -49,6 +77,7 @@ namespace Casino_gym
                 return;
             }
 
+            isNavigatingToGame = true;
             WalletSimpleForm wallet = new WalletSimpleForm(Login.CurrentLoggedUsername);
             wallet.Show();
             this.Close();
@@ -56,6 +85,7 @@ namespace Casino_gym
 
         private void btnPoker_Click(object sender, EventArgs e)
         {
+            isNavigatingToGame = true;
             poker pokerForm = new poker();
             pokerForm.Show();
             this.Close();
@@ -63,6 +93,7 @@ namespace Casino_gym
 
         private void btnBlackJack_Click(object sender, EventArgs e)
         {
+            isNavigatingToGame = true;
             Blackjack blackjackForm = new Blackjack(Login.CurrentLoggedUsername);
             blackjackForm.Show();
             this.Close();
@@ -70,6 +101,7 @@ namespace Casino_gym
 
         private void btnSlots_Click(object sender, EventArgs e)
         {
+            isNavigatingToGame = true;
             SlotsForm slotsForm = new SlotsForm(Login.CurrentLoggedUsername);
             slotsForm.Show();
             this.Close();
@@ -77,6 +109,7 @@ namespace Casino_gym
 
         private void btnRoulette_Click(object sender, EventArgs e)
         {
+            isNavigatingToGame = true;
             Ruletka rouletteForm = new Ruletka(Login.CurrentLoggedUsername);
             rouletteForm.Show();
             this.Close();
@@ -84,6 +117,7 @@ namespace Casino_gym
 
         private void btnUpperLower_Click(object sender, EventArgs e)
         {
+            isNavigatingToGame = true;
             UpperLower game = new UpperLower(Login.CurrentLoggedUsername);
             game.Show();
             this.Close();

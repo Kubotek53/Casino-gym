@@ -225,7 +225,7 @@ namespace Casino_gym
         private void ShowCard(ULCard c)
         {
             lblCard.Text = c.ToString();
-            // Simple coloring
+            
             if (c.Suit == "♥" || c.Suit == "♦") lblCard.ForeColor = Color.Red;
             else lblCard.ForeColor = Color.Black;
         }

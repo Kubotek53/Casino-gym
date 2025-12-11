@@ -39,9 +39,7 @@ namespace Casino_gym
             btnReturn = new Button();
             ((System.ComponentModel.ISupportInitialize)numericBet).BeginInit();
             SuspendLayout();
-            // 
-            // listBoxPlayer
-            // 
+
             listBoxPlayer.BackColor = Color.White;
             listBoxPlayer.Font = new Font("Segoe UI", 12F);
             listBoxPlayer.FormattingEnabled = true;
@@ -50,9 +48,7 @@ namespace Casino_gym
             listBoxPlayer.Name = "listBoxPlayer";
             listBoxPlayer.Size = new Size(280, 150);
             listBoxPlayer.TabIndex = 0;
-            // 
-            // listBoxDealer
-            // 
+
             listBoxDealer.BackColor = Color.White;
             listBoxDealer.Font = new Font("Segoe UI", 12F);
             listBoxDealer.FormattingEnabled = true;
@@ -61,10 +57,9 @@ namespace Casino_gym
             listBoxDealer.Name = "listBoxDealer";
             listBoxDealer.Size = new Size(280, 150);
             listBoxDealer.TabIndex = 1;
-            // 
-            // btnDeal
-            // 
-            btnDeal.BackColor = Color.FromArgb(40, 167, 69); // Green
+       
+
+            btnDeal.BackColor = Color.FromArgb(40, 167, 69); 
             btnDeal.FlatStyle = FlatStyle.Flat;
             btnDeal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnDeal.ForeColor = Color.White;
@@ -75,10 +70,8 @@ namespace Casino_gym
             btnDeal.Text = "DEAL";
             btnDeal.UseVisualStyleBackColor = false;
             btnDeal.Click += btnDeal_Click;
-            // 
-            // btnHit
-            // 
-            btnHit.BackColor = Color.FromArgb(0, 123, 255); // Blue
+        
+            btnHit.BackColor = Color.FromArgb(0, 123, 255); 
             btnHit.FlatStyle = FlatStyle.Flat;
             btnHit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnHit.ForeColor = Color.White;
@@ -89,10 +82,8 @@ namespace Casino_gym
             btnHit.Text = "HIT";
             btnHit.UseVisualStyleBackColor = false;
             btnHit.Click += btnHit_Click;
-            // 
-            // btnStand
-            // 
-            btnStand.BackColor = Color.FromArgb(220, 53, 69); // Red
+      
+            btnStand.BackColor = Color.FromArgb(220, 53, 69); 
             btnStand.FlatStyle = FlatStyle.Flat;
             btnStand.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnStand.ForeColor = Color.White;
@@ -103,9 +94,7 @@ namespace Casino_gym
             btnStand.Text = "STAND";
             btnStand.UseVisualStyleBackColor = false;
             btnStand.Click += btnStand_Click;
-            // 
-            // numericBet
-            // 
+    
             numericBet.Font = new Font("Segoe UI", 14F);
             numericBet.Location = new Point(600, 410);
             numericBet.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -114,9 +103,7 @@ namespace Casino_gym
             numericBet.TabIndex = 5;
             numericBet.TextAlign = HorizontalAlignment.Center;
             numericBet.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            // 
-            // lblBankroll
-            // 
+      
             lblBankroll.AutoSize = true;
             lblBankroll.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblBankroll.ForeColor = Color.Gold;
@@ -125,9 +112,7 @@ namespace Casino_gym
             lblBankroll.Size = new Size(120, 25);
             lblBankroll.TabIndex = 6;
             lblBankroll.Text = "Bankroll: $0";
-            // 
-            // lblPlayerValue
-            // 
+        
             lblPlayerValue.AutoSize = true;
             lblPlayerValue.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblPlayerValue.ForeColor = Color.White;
@@ -136,9 +121,7 @@ namespace Casino_gym
             lblPlayerValue.Size = new Size(81, 19);
             lblPlayerValue.TabIndex = 7;
             lblPlayerValue.Text = "Wartość: 0";
-            // 
-            // lblDealerValue
-            // 
+     
             lblDealerValue.AutoSize = true;
             lblDealerValue.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblDealerValue.ForeColor = Color.White;
@@ -147,18 +130,14 @@ namespace Casino_gym
             lblDealerValue.Size = new Size(81, 19);
             lblDealerValue.TabIndex = 8;
             lblDealerValue.Text = "Wartość: 0";
-            // 
-            // btnReset
-            // 
-            btnReset.Visible = false; // Hidden as requested
+   
+            btnReset.Visible = false;
             btnReset.Location = new Point(0, 0);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(0, 0);
             btnReset.TabIndex = 9;
             btnReset.Text = "Reset";
-            // 
-            // btnReturn
-            // 
+       
             btnReturn.BackColor = Color.DimGray;
             btnReturn.FlatStyle = FlatStyle.Flat;
             btnReturn.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -170,9 +149,7 @@ namespace Casino_gym
             btnReturn.Text = "Powrót";
             btnReturn.UseVisualStyleBackColor = false;
             btnReturn.Click += btnReturn_Click;
-            // 
-            // Blackjack
-            // 
+       
             ClientSize = new Size(800, 500);
             BackColor = Color.FromArgb(45, 45, 45);
             Controls.Add(btnReturn);

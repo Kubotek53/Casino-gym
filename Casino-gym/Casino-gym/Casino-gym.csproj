@@ -183,6 +183,8 @@
     <Compile Include="WalletSimpleForm.Designer.cs">
       <DependentUpon>WalletSimpleForm.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\gr.png" />
+    <None Include="Resources\gr1.png" />
     <Content Include="Resources\sym1.png" />
     <Content Include="Resources\sym2.png" />
     <Content Include="Resources\sym3.png" />

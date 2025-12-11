@@ -36,9 +36,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBet)).BeginInit();
             this.SuspendLayout();
 
-            // 
-            // lblCard
-            // 
+           
             this.lblCard.BackColor = System.Drawing.Color.White;
             this.lblCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCard.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold);
@@ -49,9 +47,7 @@
             this.lblCard.Text = "?";
             this.lblCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
-            // 
-            // btnHigher
-            // 
+          
             this.btnHigher.BackColor = System.Drawing.Color.Green;
             this.btnHigher.Enabled = false;
             this.btnHigher.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
@@ -64,9 +60,7 @@
             this.btnHigher.UseVisualStyleBackColor = false;
             this.btnHigher.Click += new System.EventHandler(this.btnHigher_Click);
 
-            // 
-            // btnLower
-            // 
+            
             this.btnLower.BackColor = System.Drawing.Color.Red;
             this.btnLower.Enabled = false;
             this.btnLower.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
@@ -79,9 +73,7 @@
             this.btnLower.UseVisualStyleBackColor = false;
             this.btnLower.Click += new System.EventHandler(this.btnLower_Click);
 
-            // 
-            // btnDeal
-            // 
+           
             this.btnDeal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnDeal.Location = new System.Drawing.Point(50, 200);
             this.btnDeal.Name = "btnDeal";
@@ -91,9 +83,7 @@
             this.btnDeal.UseVisualStyleBackColor = true;
             this.btnDeal.Click += new System.EventHandler(this.btnDeal_Click);
 
-            // 
-            // btnReturn
-            // 
+         
             this.btnReturn.Location = new System.Drawing.Point(12, 12);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(100, 40);
@@ -102,9 +92,7 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
 
-            // 
-            // lblBalance
-            // 
+          
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblBalance.ForeColor = System.Drawing.Color.Gold;
@@ -113,10 +101,7 @@
             this.lblBalance.Size = new System.Drawing.Size(150, 30);
             this.lblBalance.TabIndex = 5;
             this.lblBalance.Text = "Saldo: $0.00";
-
-            // 
-            // lblResult
-            // 
+ 
             this.lblResult.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblResult.ForeColor = System.Drawing.Color.White;
             this.lblResult.Location = new System.Drawing.Point(200, 420);
@@ -126,9 +111,7 @@
             this.lblResult.Text = "Postaw zakład i naciśnij GRAJ";
             this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
-            // 
-            // nudBet
-            // 
+         
             this.nudBet.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.nudBet.Location = new System.Drawing.Point(50, 150);
             this.nudBet.Maximum = new decimal(new int[] {
@@ -150,9 +133,7 @@
             0,
             0});
 
-            // 
-            // lblBetLabel
-            // 
+       
             this.lblBetLabel.AutoSize = true;
             this.lblBetLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblBetLabel.ForeColor = System.Drawing.Color.White;
@@ -162,9 +143,8 @@
             this.lblBetLabel.TabIndex = 8;
             this.lblBetLabel.Text = "Stawka:";
 
-            // 
-            // UpperLower
-            // 
+     
+        
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.lblBetLabel);

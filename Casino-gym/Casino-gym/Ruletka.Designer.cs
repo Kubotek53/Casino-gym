@@ -29,9 +29,7 @@
             this.lblTotalBet = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericBet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
+          
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblTitle.ForeColor = System.Drawing.Color.Gold;
@@ -40,9 +38,7 @@
             this.lblTitle.Size = new System.Drawing.Size(130, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Ruletka";
-            // 
-            // lblBankroll
-            // 
+         
             this.lblBankroll.AutoSize = true;
             this.lblBankroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblBankroll.ForeColor = System.Drawing.Color.White;
@@ -51,9 +47,7 @@
             this.lblBankroll.Size = new System.Drawing.Size(113, 24);
             this.lblBankroll.TabIndex = 1;
             this.lblBankroll.Text = "Bankroll: $0";
-            // 
-            // numericBet
-            // 
+        
             this.numericBet.DecimalPlaces = 2;
             this.numericBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.numericBet.Location = new System.Drawing.Point(34, 150);
@@ -75,9 +69,7 @@
             0,
             0,
             0});
-            // 
-            // lblBetAmount
-            // 
+       
             this.lblBetAmount.AutoSize = true;
             this.lblBetAmount.ForeColor = System.Drawing.Color.White;
             this.lblBetAmount.Location = new System.Drawing.Point(31, 130);
@@ -85,9 +77,7 @@
             this.lblBetAmount.Size = new System.Drawing.Size(120, 13);
             this.lblBetAmount.TabIndex = 5;
             this.lblBetAmount.Text = "Wartość żetonu (Stawka)";
-            // 
-            // btnSpin
-            // 
+        
             this.btnSpin.BackColor = System.Drawing.Color.Gold;
             this.btnSpin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSpin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
@@ -99,9 +89,7 @@
             this.btnSpin.Text = "ZAKRĘĆ";
             this.btnSpin.UseVisualStyleBackColor = false;
             this.btnSpin.Click += new System.EventHandler(this.btnSpin_Click);
-            // 
-            // btnReturn
-            // 
+        
             this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReturn.BackColor = System.Drawing.Color.IndianRed;
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -114,9 +102,7 @@
             this.btnReturn.Text = "Powrót";
             this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // lblResult
-            // 
+       
             this.lblResult.AutoSize = true;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lblResult.ForeColor = System.Drawing.Color.White;
@@ -126,9 +112,7 @@
             this.lblResult.TabIndex = 10;
             this.lblResult.Text = "Wynik";
             this.lblResult.Visible = false;
-            // 
-            // lblResultNumber
-            // 
+      
             this.lblResultNumber.AutoSize = true;
             this.lblResultNumber.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold);
             this.lblResultNumber.ForeColor = System.Drawing.Color.Gold;
@@ -136,17 +120,13 @@
             this.lblResultNumber.Name = "lblResultNumber";
             this.lblResultNumber.Size = new System.Drawing.Size(0, 75);
             this.lblResultNumber.TabIndex = 11;
-            // 
-            // pnlBoard
-            // 
+       
             this.pnlBoard.BackColor = System.Drawing.Color.Green;
             this.pnlBoard.Location = new System.Drawing.Point(300, 100);
             this.pnlBoard.Name = "pnlBoard";
             this.pnlBoard.Size = new System.Drawing.Size(600, 300);
             this.pnlBoard.TabIndex = 12;
-            // 
-            // lblTotalBet
-            // 
+       
             this.lblTotalBet.AutoSize = true;
             this.lblTotalBet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblTotalBet.ForeColor = System.Drawing.Color.Gold;
@@ -155,9 +135,7 @@
             this.lblTotalBet.Size = new System.Drawing.Size(176, 20);
             this.lblTotalBet.TabIndex = 13;
             this.lblTotalBet.Text = "Aktualny zakład: $0.00";
-            // 
-            // Ruletka
-            // 
+          
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));

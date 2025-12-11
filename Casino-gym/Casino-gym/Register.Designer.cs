@@ -2,15 +2,10 @@
 {
     partial class Register
     {
-        /// <summary>
-        /// Wymagana zmienna projektanta.
-        /// </summary>
+        
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Zwolnij zasoby.
-        /// </summary>
-        /// <param name="disposing"></param>
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,9 +17,7 @@
 
         #region Kod generowany przez Projektanta Windows Forms
 
-        /// <summary>
-        /// Metoda wymagana do obsługi projektanta.
-        /// </summary>
+       
         private void InitializeComponent()
         {
             this.textboxUsername = new System.Windows.Forms.TextBox();
@@ -36,31 +29,23 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // textboxUsername
-            // 
+       
             this.textboxUsername.Location = new System.Drawing.Point(120, 50);
             this.textboxUsername.Name = "textboxUsername";
             this.textboxUsername.Size = new System.Drawing.Size(150, 20);
             this.textboxUsername.TabIndex = 0;
-            // 
-            // textboxPassword
-            // 
+          
             this.textboxPassword.Location = new System.Drawing.Point(120, 90);
             this.textboxPassword.Name = "textboxPassword";
             this.textboxPassword.PasswordChar = '*';
             this.textboxPassword.Size = new System.Drawing.Size(150, 20);
             this.textboxPassword.TabIndex = 1;
-            // 
-            // textboxAge
-            // 
+         
             this.textboxAge.Location = new System.Drawing.Point(120, 130);
             this.textboxAge.Name = "textboxAge";
             this.textboxAge.Size = new System.Drawing.Size(150, 20);
             this.textboxAge.TabIndex = 2;
-            // 
-            // label1
-            // 
+        
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(40, 53);
             this.label1.Name = "label1";
@@ -68,28 +53,22 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Nazwa konta:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
+          
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Hasło:";
-            // 
-            // label3
-            // 
+       
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Wiek:";
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(25, 135, 84); // zielony (Bootstrap 'success')
+       
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(25, 135, 84); 
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.ForeColor = System.Drawing.Color.White;
@@ -103,10 +82,8 @@
             this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
 
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(108, 117, 125); // szary (Bootstrap 'secondary')
+           
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(108, 117, 125); 
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.ForeColor = System.Drawing.Color.White;
@@ -120,9 +97,7 @@
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
 
-            // 
-            // Register
-            // 
+          
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;

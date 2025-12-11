@@ -2,15 +2,10 @@
 {
     partial class SlotsForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+      
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+  
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +17,7 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+     
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -42,27 +34,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbReel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbReel1
-            // 
+         
             this.pbReel1.Location = new System.Drawing.Point(220, 150);
             this.pbReel1.Name = "pbReel1";
             this.pbReel1.Size = new System.Drawing.Size(100, 100);
             this.pbReel1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbReel1.TabIndex = 0;
             this.pbReel1.TabStop = false;
-            // 
-            // pbReel2
-            // 
+         
             this.pbReel2.Location = new System.Drawing.Point(350, 150);
             this.pbReel2.Name = "pbReel2";
             this.pbReel2.Size = new System.Drawing.Size(100, 100);
             this.pbReel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbReel2.TabIndex = 1;
             this.pbReel2.TabStop = false;
-            // 
-            // pbReel3
-            // 
+           
             this.pbReel3.Location = new System.Drawing.Point(480, 150);
             this.pbReel3.Name = "pbReel3";
             this.pbReel3.Size = new System.Drawing.Size(100, 100);
@@ -70,9 +56,7 @@
             this.pbReel3.TabIndex = 2;
             this.pbReel3.TabStop = false;
             this.pbReel3.Click += new System.EventHandler(this.pbReel3_Click);
-            // 
-            // btnSpin
-            // 
+          
             this.btnSpin.BackColor = System.Drawing.Color.Gold;
             this.btnSpin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSpin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -85,9 +69,7 @@
             this.btnSpin.Text = "SPIN";
             this.btnSpin.UseVisualStyleBackColor = false;
             this.btnSpin.Click += new System.EventHandler(this.btnSpin_Click_1);
-            // 
-            // nudBet
-            // 
+          
             this.nudBet.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.nudBet.Location = new System.Drawing.Point(350, 80);
             this.nudBet.Name = "nudBet";
@@ -95,9 +77,7 @@
             this.nudBet.TabIndex = 4;
             this.nudBet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudBet.ValueChanged += new System.EventHandler(this.nudBet_ValueChanged);
-            // 
-            // lblSaldo
-            // 
+         
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblSaldo.ForeColor = System.Drawing.Color.White;
@@ -108,13 +88,9 @@
             this.lblSaldo.Text = "Saldo: $0.00";
             this.lblSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblSaldo.Click += new System.EventHandler(this.lblSaldo_Click);
-            // 
-            // timerSpin
-            // 
+        
             this.timerSpin.Tick += new System.EventHandler(this.timerSpin_Tick);
-            // 
-            // btnBack
-            // 
+          
             this.btnBack.BackColor = System.Drawing.Color.DimGray;
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -127,9 +103,7 @@
             this.btnBack.Text = "Powrót";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // SlotsForm
-            // 
+        
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));

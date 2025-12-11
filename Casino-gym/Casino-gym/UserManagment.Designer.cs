@@ -2,15 +2,10 @@
 {
     partial class UserManagement
     {
-        /// <summary>
-        /// Wymagana zmienna projektanta.
-        /// </summary>
+        
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Zwolnij zasoby.
-        /// </summary>
-        /// <param name="disposing">true jeśli zasoby mają być zwolnione; false w przeciwnym wypadku.</param>
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +17,7 @@
 
         #region Kod generowany przez Projektanta formularzy Windows Forms
 
-        /// <summary>
-        /// Metoda wymagana do wsparcia projektanta — nie modyfikuj
-        /// jej zawartości w edytorze kodu.
-        /// </summary>
+      
         private void InitializeComponent()
         {
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
@@ -35,9 +27,7 @@
             this.labelTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridViewUsers
-            // 
+          
             this.dataGridViewUsers.AllowUserToAddRows = false;
             this.dataGridViewUsers.AllowUserToDeleteRows = false;
             this.dataGridViewUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -51,9 +41,7 @@
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsers.Size = new System.Drawing.Size(500, 250);
             this.dataGridViewUsers.TabIndex = 0;
-            // 
-            // btnAdd
-            // 
+           
             this.btnAdd.BackColor = System.Drawing.Color.LightGreen;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd.Location = new System.Drawing.Point(25, 330);
@@ -63,9 +51,7 @@
             this.btnAdd.Text = "➕ Dodaj użytkownika";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
+         
             this.btnDelete.BackColor = System.Drawing.Color.LightCoral;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnDelete.Location = new System.Drawing.Point(200, 330);
@@ -75,9 +61,7 @@
             this.btnDelete.Text = "🗑️ Usuń użytkownika";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnBack
-            // 
+          
             this.btnBack.BackColor = System.Drawing.Color.LightGray;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnBack.Location = new System.Drawing.Point(375, 330);
@@ -87,9 +71,7 @@
             this.btnBack.Text = "⬅️ Powrót";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // labelTitle
-            // 
+         
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelTitle.Location = new System.Drawing.Point(180, 20);
@@ -97,9 +79,7 @@
             this.labelTitle.Size = new System.Drawing.Size(203, 24);
             this.labelTitle.TabIndex = 4;
             this.labelTitle.Text = "👤 Zarządzanie kontami";
-            // 
-            // UserManagement
-            // 
+          
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
